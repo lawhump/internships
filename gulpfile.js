@@ -58,7 +58,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('default', ['sass', 'scripts'], function() {
-  gulp.watch(['app/scss/**/*.scss'], ['sass']);
+  gulp.watch(['app/scss/*.scss'], ['sass']);
   gulp.watch('app/js/*.js', ['scripts']);
 });
 
