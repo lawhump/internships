@@ -6,7 +6,28 @@ section {
   }
 }
 
+/* Helpers */
+.container {
+  background-color: #ccc;
+  width: 100vw;
+}
+/* End Helpers */
+
+
+/* Highest level shit */
+
+.hero {
+  width: 100%;
+
+  img {
+    height: 40vmax;
+    width: 100%;
+  }
+}
+
 .nav {
+  background-color: #eee;
+  overflow: hidden;
   padding: 1rem 0;
 }
 
@@ -27,44 +48,39 @@ section {
   }
 }
 
+.overview {
+  background-color: #ddd;
+  padding: 3rem 0;
+}
+
+.form {
+  text-align: center;
+}
+
+.footer {
+  color: white;
+  padding: 8rem 0;
+  text-align: center;
+}
+/* End highest level shit */
+
+/* Interior styles */
 .roles {
   margin-top: 3rem;
+}
 
-  :not(p) {
-    text-align: center;
-  }
+.roles :not(p) {
+  text-align: center;
 }
 
 .other {
   border-radius: 0%;
 }
 
-.overview {
-  background-color: #ddd;
-  padding: 3rem 0;
-}
 
 .sessions {
   margin-top: 6rem;
   text-align: center;
-}
-
-.nav {
-  background-color: #eee;
-  overflow: hidden;
-}
-
-.container {
-  background-color: #ccc;
-  width: 100vw;
-}
-
-.hero {
-  width: 100%;
-
-  img {
-    width: 100%;
-  }
 }
 
 .intro {
@@ -78,3 +94,8 @@ section {
     padding-top: 2.6rem;
   }
 }
+
+.the-form {
+  padding: 20rem 0;
+}
+/* End Interior styles */
