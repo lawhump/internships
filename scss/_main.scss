@@ -1,0 +1,84 @@
+body {
+  color: #0f0 !important;
+}
+
+section {
+  margin-top: 4rem;
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.nav {
+  padding: 1rem 0;
+}
+
+.about {
+
+  h2 {
+    margin: 2rem 0;
+  }
+
+  p {
+    margin: 1rem 0 5rem 0;
+  }
+}
+
+.selling-points {
+  h3 {
+    margin: 2rem 0;
+  }
+}
+
+.roles {
+  margin-top: 3rem;
+
+  :not(p) {
+    text-align: center;
+  }
+}
+
+.other {
+  border-radius: 0%;
+}
+
+.overview {
+  background-color: #ddd;
+  padding: 3rem 0;
+}
+
+.sessions {
+  margin-top: 6rem;
+  text-align: center;
+}
+
+.nav {
+  background-color: #eee;
+  overflow: hidden;
+}
+
+.container {
+  background-color: #ccc;
+  width: 100vw;
+}
+
+.hero {
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}
+
+.intro {
+  margin-top: 4rem;
+}
+
+.program-details {
+  margin-top: 3rem;
+
+  div:first-child {
+    padding-top: 2.6rem;
+  }
+}
