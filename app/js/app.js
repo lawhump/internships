@@ -1,5 +1,9 @@
 $(document).foundation();
 
+$('#hero').twentytwenty({
+	default_offset_pct: 0
+});
+
 var sliderSettings = {
 	item: 4,
 	loop: true,

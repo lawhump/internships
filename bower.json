@@ -11,7 +11,8 @@
   "dependencies": {
     "foundation-sites": "~6.1.0",
     "motion-ui": "~1.1.0",
-    "lightslider": "~1.1.5"
+    "lightslider": "~1.1.5",
+    "twentytwenty": "*"
   },
   "ignore": [
     "**/.*",

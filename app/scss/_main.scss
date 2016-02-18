@@ -7,6 +7,18 @@ section {
 }
 
 /* Helpers */
+.twentytwenty-overlay {
+  display: none;
+}
+
+.twentytwenty-handle {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+
+  // background-color: skyblue;
+}
+
 .container {
   background-color: #ccc;
   width: 100vw;
@@ -16,12 +28,15 @@ section {
 
 /* Highest level shit */
 
-.hero {
+#hero {
   width: 100%;
+  height: calc(100vh - 70px);
+  max-height: 1000px;
 
   img {
-    height: 40vmax;
+    height: 100%;
     width: 100%;
+    object-fit: cover;
   }
 }
 
