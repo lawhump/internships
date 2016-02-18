@@ -73,15 +73,66 @@ section {
 }
 
 .footer {
-  color: $white;
-  background-color: $dark-gray;
-  padding: 1rem 0 8rem;
+  color: $dark-gray;
+  background-color: $light-gray;
+  padding: 1rem 0 1rem;
   text-align: center;
+
+  .made-by {
+    margin-bottom: 2rem;
+  }
 
   img {
     position: relative;
     top: -6px;
     width: 30px;
+    margin-left: 4px;
+  }
+
+  .social-links, .text-links {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .text-links {
+    a { 
+      color: $dark-gray; 
+
+      &:hover {
+        border-bottom: 2px solid $dark-gray;
+      }
+    }
+  }
+
+  .social-links {
+    .social-link {
+      display: inline-block;
+    }
+
+    .accessibility-label {
+      position: absolute;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      width: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      display: none;
+    }
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .icon-bg-color {
+      fill: $dark-gray;
+    }
+
+    .icon-color {
+      fill: $white;
+    }
   }
 }
 /* End highest level shit */
