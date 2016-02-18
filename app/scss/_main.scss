@@ -11,6 +11,12 @@ section {
   background-color: #ccc;
   width: 100vw;
 }
+
+.fixed {
+  left: 0;
+  position: fixed;
+  top: 0;
+}
 /* End Helpers */
 
 
@@ -29,6 +35,8 @@ section {
   background-color: #eee;
   overflow: hidden;
   padding: 1rem 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .about {
@@ -67,6 +75,26 @@ section {
 /* Interior styles */
 .roles {
   margin-top: 3rem;
+
+  > div {
+    opacity:0;
+  }
+}
+
+.research {
+  transition-delay: 0s;
+}
+
+.ui {
+  transition-delay: .3s;
+}
+
+.ux {
+  transition-delay: .6s;
+}
+
+.fed {
+  transition-delay: .9s;
 }
 
 .roles :not(p) {
@@ -81,6 +109,11 @@ section {
 .sessions {
   margin-top: 6rem;
   text-align: center;
+
+  img {
+    height: 5rem;
+    width: 5rem;
+  }
 }
 
 .intro {
