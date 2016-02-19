@@ -143,3 +143,7 @@ $('a[href*="#"]:not([href="#"])').click(function() {
     }
   }
 });
+
+$('#apply-btn').click(function(){
+    $('#sucess-msg').removeClass('hide');
+  });
