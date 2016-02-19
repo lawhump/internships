@@ -17,9 +17,6 @@ var scroll = function() {
   var top_of_sessions = $('.sessions').offset().top;
   var bottom_of_window = $(window).scrollTop() + $(window).height();
 
-  console.log('top_of_roles='+top_of_roles);
-  console.log('bottom_of_window='+bottom_of_window);
-
   var margin = 170;
   // Hard coded. I know there's a more elegant way but we only have two days
   if (bottom_of_window > (top_of_roles+margin)) {
@@ -78,19 +75,39 @@ $(document).ready(function() {
   var sliderTop = $('#top-slider').lightSlider(sliderSettings);
   var sliderBot = $('#bottom-slider').lightSlider(sliderSettings);
 
-  var shuffleTimer = setTimeout(shuffle, 4000);
+  var shuffleTimer = setTimeout(shuffle, 3500);
 
-  var shuffle = function() {
+  function shuffle() {
   	sliderTop.goToSlide(Math.floor(Math.random() * 9));
   	sliderBot.goToSlide(Math.floor(Math.random() * 9));
   };
 
-  var resetTimer = function() {
+  function resetTimer() {
       clearTimeout(shuffleTimer);
-      shuffleTimer = setTimeout(shuffle, 4000);
+      shuffleTimer = setTimeout(shuffle, 3500);
   };
 
   $('.shuffle').on('click', shuffle);
 });
 
 $(window).scroll(scroll);
+
+
+// clickable roles buttons in the form
+
+$('.role-names').click(function(){
+    $(this).toggleClass('active-role');
+  });
+
+$('a[href*="#"]:not([href="#"])').click(function() {
+  if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+    var target = $(this.hash);
+    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+    if (target.length) {
+      $('html, body').animate({
+        scrollTop: target.offset().top - $('.nav').height()
+      }, 1000);
+      return false;
+    }
+  }
+});

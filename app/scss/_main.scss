@@ -72,6 +72,7 @@ input:focus {
 /* Highest level shit */
 body{
   color:#323232;
+  overflow-x: hidden;
 }
 
 #hero {
@@ -80,28 +81,33 @@ body{
   max-height: 1000px;
 
   .title {
-    position: absolute;
-    top: calc((100% - 70px)/2);
-    left: 50%;
-    width: 100%;
-    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+    position: absolute;
+    height: calc(100% - 70px);
+    width: 100%;
 
     z-index: 30;
 
-    user-drag: none; 
+    user-drag: none;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
 
+    // background-color: rgba(0, 180, 160, .3);
+
     h3 {
       text-align: center;
       color: #fff;
+    }
+
+    img {
+      width: 100%;
+      max-width: 800px;
     }
   }
 }
@@ -202,12 +208,29 @@ nav {
 }
 
 .form {
-  background-color: $dark-gray;
+  background-color: #454D56;
   color: $white;
   margin-top: 0;
   padding: 6rem 0;
 }
+.discipline {
+  margin-top: 3rem;
+}
 
+.role-names {
+  transition: all .2s ease;
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+
+.active-role {
+  //border: 3px solid #00B4A0;
+  box-shadow: inset 0 0 0 3px #00B4A0;
+}
+
+.role-names{
+  padding: 1rem 0;
+}
 .footer {
   color: $dark-gray;
   background-color: $light-gray;
@@ -215,8 +238,8 @@ nav {
   text-align: center;
 
   .made-by {
-    margin-top: 2rem;
-    margin-bottom: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 
   img {
@@ -278,6 +301,7 @@ nav {
 .roles {
   margin-top: 3rem;
   margin-bottom: 3rem;
+  color: $white;
   > div {
     // opacity:0;
   }
@@ -398,6 +422,10 @@ section.round-image img{
 
 .the-form {
   padding: 20rem 0;
+}
+
+.apply-btn a.button{
+  background-color: #5AA700;
 }
 
 .alums {
