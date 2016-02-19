@@ -4163,6 +4163,27 @@ nav {
   color: #5AA700;
   font-weight: bold; }
 
+#about h2 {
+  color: #5AA700; }
+
+#eq h3 {
+  color: #00B4A0; }
+
+.relationship h3 {
+  color: #018571; }
+
+.dowork h3 {
+  color: #006C5D; }
+
+.overview h3 {
+  color: #006C5D; }
+
+.form h3 {
+  color: #41D6C3; }
+
+.alums {
+  color: #003C32; }
+
 #work {
   background-color: #f1f3f4;
   padding-bottom: 3rem; }
@@ -4179,11 +4200,12 @@ nav {
   padding: 1rem 0 1rem;
   text-align: center; }
   .footer .made-by {
-    margin-bottom: 2rem; }
+    margin-top: 2rem;
+    margin-bottom: 4rem; }
   .footer img {
     position: relative;
     top: -6px;
-    width: 30px;
+    width: 24px;
     margin-left: 4px; }
   .footer .social-links, .footer .text-links {
     display: -webkit-flex;
@@ -4251,6 +4273,10 @@ nav {
 .city-skyline {
   margin-top: 1rem; }
 
+.city-skyline img {
+  margin-right: .5rem;
+  width: 2.25rem; }
+
 section.round-image img {
   border-radius: 0; }
 
@@ -4296,7 +4322,8 @@ section.round-image img {
     margin-bottom: 3px; }
 
 .alums h3 {
-  margin-bottom: 6rem; }
+  margin-bottom: 6rem;
+  padding-top: 2rem; }
 
 .alums img {
   width: 100%; }
@@ -4307,5 +4334,8 @@ section.round-image img {
 
 .alums ul {
   width: 100%; }
+
+button.shuffle {
+  margin-top: 2rem; }
 
 /* End Interior styles */
