@@ -101,6 +101,7 @@ h5{
 
   .title {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -121,7 +122,8 @@ h5{
 
     h3 {
       text-align: center;
-      color: #fff;
+      color: #8cd211;
+      font-size: 3em;
     }
 
     img {
@@ -476,10 +478,14 @@ section.round-image img{
   background-color:#8cd211;
   margin-top: 6rem;
 
-}
-#band h4{
-  padding-bottom: 2rem;
-  color: #003C32;
+  h4{
+    padding-bottom: 2rem;
+    color: #003C32;
+  }
+
+  button {
+    font-size: 1em;
+  }
 }
 
 .overview{

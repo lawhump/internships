@@ -4159,6 +4159,9 @@ h5 {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -4179,7 +4182,8 @@ h5 {
     -ms-user-select: none; }
     #hero .title h3 {
       text-align: center;
-      color: #fff; }
+      color: #8cd211;
+      font-size: 3em; }
     #hero .title img {
       width: 100%;
       max-width: 800px; }
@@ -4439,10 +4443,11 @@ section.round-image img {
   padding: 4rem 0;
   background-color: #8cd211;
   margin-top: 6rem; }
-
-#band h4 {
-  padding-bottom: 2rem;
-  color: #003C32; }
+  #band h4 {
+    padding-bottom: 2rem;
+    color: #003C32; }
+  #band button {
+    font-size: 1em; }
 
 .overview {
   margin-top: 0;
