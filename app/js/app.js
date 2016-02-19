@@ -75,16 +75,16 @@ $(document).ready(function() {
   var sliderTop = $('#top-slider').lightSlider(sliderSettings);
   var sliderBot = $('#bottom-slider').lightSlider(sliderSettings);
 
-  var shuffleTimer = setTimeout(shuffle, 4000);
+  var shuffleTimer = setTimeout(shuffle, 3500);
 
-  var shuffle = function() {
+  function shuffle() {
   	sliderTop.goToSlide(Math.floor(Math.random() * 9));
   	sliderBot.goToSlide(Math.floor(Math.random() * 9));
   };
 
-  var resetTimer = function() {
+  function resetTimer() {
       clearTimeout(shuffleTimer);
-      shuffleTimer = setTimeout(shuffle, 4000);
+      shuffleTimer = setTimeout(shuffle, 3500);
   };
 
   $('.shuffle').on('click', shuffle);
