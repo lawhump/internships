@@ -4355,7 +4355,7 @@ section.round-image img {
   border-radius: 0; }
 
 .dowork {
-  margin-bottom: 6rem; }
+  padding-bottom: 6rem; }
 
 #band {
   padding: 4rem 0;
@@ -4417,3 +4417,11 @@ button.shuffle {
   margin-top: 2rem; }
 
 /* End Interior styles */
+/* media queries */
+@media screen and (max-width: 39.9375em) {
+  .twentytwenty-handle {
+    display: none; }
+  #hero-slider img {
+    clip: initial !important; }
+  #hero-slider video {
+    display: none; } }

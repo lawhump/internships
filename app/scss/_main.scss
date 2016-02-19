@@ -242,7 +242,7 @@ nav {
 
   .made-by {
     margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
   }
 
   img {
@@ -383,7 +383,7 @@ section.round-image img{
 }
 
 .dowork {
-  margin-bottom: 6rem;
+  padding-bottom: 6rem;
 }
 
 #band{
@@ -464,3 +464,20 @@ button.shuffle {
   margin-top: 2rem;
 }
 /* End Interior styles */
+
+/* media queries */
+@include breakpoint(small down) {
+  .twentytwenty-handle {
+    display: none;
+  }
+
+  #hero-slider {
+    img {
+      clip: initial !important;
+    }
+
+    video {
+      display: none;
+    }
+  }
+}
