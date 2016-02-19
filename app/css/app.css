@@ -4256,6 +4256,10 @@ nav {
 #eq h3 {
   color: #00B4A0; }
 
+p.fun-fact {
+  color: #5AA700;
+  font-weight: bold; }
+
 .relationship h3 {
   color: #018571; }
 
