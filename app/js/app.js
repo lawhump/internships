@@ -103,12 +103,26 @@ $(document).ready(function() {
 
 $(window).scroll(scroll);
 
-
-// clickable roles buttons in the form
+$('input').on('click', function(e) {
+    // $('label').each(function(i){
+    //   console.log(e);
+    //   $(this).css('color', 'white');
+    // });
+    //
+    // if(e.target && $(this).is(':focus')) {
+    //   // console.log(e.target);
+    //   // e.target.prev().css('color','#08B49F');
+    //   // console.log(e.target.previousSibling.previousSibling);
+    //   // e.target.style.visibility = 'hidden';
+    //   var prev = e.target.previousSibling.previousSibling;
+    //   console.log(prev.style.color);
+    //   prev.style.color = '#08B49F';
+    }
+});
 
 $('.role-names').click(function(){
-    $(this).toggleClass('active-role');
-  });
+  $(this).toggleClass('active-role');
+});
 
 $('a[href*="#"]:not([href="#"])').click(function() {
   if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
