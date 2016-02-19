@@ -4302,59 +4302,46 @@ nav {
   background-color: #ececec;
   padding: 1rem 0 1rem;
   text-align: center; }
-
-.footer-items {
-  font-size: .9rem; }
-
-.footer .social-links .icon-bg-color {
-  fill: #586464; }
-
-.footer .made-by {
-  margin-top: 1rem;
-  margin-bottom: 5rem; }
-
-.footer img {
-  position: relative;
-  top: -6px;
-  width: 24px;
-  margin-left: 4px; }
-
-.footer .social-links, .footer .text-links {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between; }
-
-.footer .text-links a {
-  color: #323232; }
-  .footer .text-links a:hover {
-    border-bottom: 2px solid #323232; }
-
-.footer .social-links .social-link {
-  display: inline-block; }
-
-.footer .social-links .accessibility-label {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  display: none; }
-
-.footer .social-links svg {
-  width: 30px;
-  height: 30px; }
-
-.footer .social-links .icon-bg-color {
-  fill: #323232; }
-
-.footer .social-links .icon-color {
-  fill: #fefefe; }
+  .footer .social-links .icon-bg-color {
+    fill: #586464; }
+  .footer .made-by {
+    margin-top: 1rem;
+    margin-bottom: 5rem; }
+  .footer img {
+    position: relative;
+    top: -6px;
+    width: 24px;
+    margin-left: 4px; }
+  .footer .social-links, .footer .text-links {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+  .footer .text-links a {
+    color: #323232; }
+    .footer .text-links a:hover {
+      border-bottom: 2px solid #323232; }
+  .footer .social-links .social-link {
+    display: inline-block; }
+  .footer .social-links .accessibility-label {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    display: none; }
+  .footer .social-links svg {
+    width: 30px;
+    height: 30px; }
+  .footer .social-links .icon-bg-color {
+    fill: #323232; }
+  .footer .social-links .icon-color {
+    fill: #fefefe; }
 
 /* End highest level shit */
 /* Interior styles */
