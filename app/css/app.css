@@ -1589,7 +1589,7 @@ textarea {
   width: 100%;
   height: 2.4375rem;
   padding: 0.5rem;
-  border: 1px solid #cacaca;
+  border: 0px solid #cacaca;
   margin: 0 0 1rem;
   font-family: inherit;
   font-size: 1rem;
@@ -1602,10 +1602,10 @@ textarea {
   -moz-appearance: none; }
   [type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus, [type='number']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='url']:focus, [type='color']:focus,
   textarea:focus {
-    border: 1px solid #323232;
-    background-color: #cacaca;
+    border: 0px solid #323232;
+    background-color: #323232;
     outline: none;
-    box-shadow: 0 0 5px #cacaca;
+    box-shadow: 0 0 0px #cacaca;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
 
 textarea {
@@ -1657,7 +1657,7 @@ label {
   color: #fefefe; }
   label.middle {
     margin: 0 0 1rem;
-    padding: 0.5625rem 0; }
+    padding: 0.5rem 0; }
 
 .help-text {
   margin-top: -0.5rem;
@@ -1718,7 +1718,7 @@ legend {
   max-width: 100%; }
 
 .fieldset {
-  border: 1px solid #cacaca;
+  border: 0px solid #cacaca;
   padding: 1.25rem;
   margin: 1.125rem 0; }
   .fieldset legend {
@@ -1730,7 +1730,7 @@ legend {
 select {
   height: 2.4375rem;
   padding: 0.5rem;
-  border: 1px solid #cacaca;
+  border: 0px solid #cacaca;
   margin: 0 0 1rem;
   font-size: 1rem;
   font-family: inherit;
@@ -4093,6 +4093,9 @@ section {
   margin-top: 4rem; }
   section.round-image img {
     border-radius: 50%; }
+
+[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
+  border-bottom: 1px solid #cacaca; }
 
 /* Helpers */
 .twentytwenty-overlay {
