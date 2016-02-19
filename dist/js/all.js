@@ -21,11 +21,11 @@ var scroll = function() {
   var isPositionFixed = ($el.css('position') == 'fixed');
   if ($(this).scrollTop() > hero_height && !isPositionFixed){
     $('.nav').css({'position': 'fixed', 'top': '0px'});
-    document.querySelector('.about').style.paddingTop = '65px'
+    document.querySelector('.about').style.paddingTop = $el.height()+'px';
   }
   if ($(this).scrollTop() < hero_height && isPositionFixed) {
     $('.nav').css({'position': 'static', 'top': '0px'});
-    document.querySelector('.about').style.paddingTop = '0'
+    document.querySelector('.about').style.paddingTop = '0';
   }
 
 };
