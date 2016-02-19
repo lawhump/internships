@@ -106,7 +106,7 @@ $('a[href*="#"]:not([href="#"])').click(function() {
     if (target.length) {
       $('html, body').animate({
         scrollTop: target.offset().top - $('.nav').height()
-      }, 400);
+      }, 1000);
       return false;
     }
   }
