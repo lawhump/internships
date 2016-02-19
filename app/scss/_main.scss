@@ -90,9 +90,10 @@ body{
 }
 
 .nav {
-  background-color: #eee;
+  background-color: #fff;
+  border-bottom: 1px solid #DFE9E9;
   overflow: hidden;
-  padding: 1rem 0;
+  padding: .7rem 0;
   width: 100%;
   z-index: 10;
 }
@@ -131,7 +132,7 @@ nav {
   font-weight: bold;
 }
 
-#overview {
+#work{
   background-color: #f1f3f4;
   padding-bottom: 3rem;
 }
@@ -211,7 +212,7 @@ nav {
 /* Interior styles */
 .roles {
   margin-top: 3rem;
-
+  margin-bottom: 3rem;
   > div {
     // opacity:0;
   }
@@ -241,7 +242,12 @@ nav {
 .roles :not(p) {
   text-align: center;
 }
-
+.apply-btn {
+  margin-top: 3rem;
+}
+.name-input{
+  margin-top: 2rem;
+}
 
 .other {
   border-radius: 0%;
@@ -259,7 +265,7 @@ nav {
 }
 
 .dowork {
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
 }
 
 #band{
@@ -269,7 +275,11 @@ nav {
 
 }
 #band h4{
-  padding-bottom:2rem;
+  padding-bottom: 2rem;
+}
+
+.overview{
+  padding-bottom: 4rem;
 }
 .button.hollow{
   color: #006c5d;
