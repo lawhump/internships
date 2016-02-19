@@ -32,6 +32,12 @@
   }
 }
 
+@include mui-series {
+  .location {
+    @include mui-queue(.2s, 0s, fade);
+  }
+}
+
 section {
   margin-top: 4rem;
 
@@ -441,8 +447,10 @@ h5.swe{
 }
 .city-skyline {
   margin-top:1.5rem;
+  transition: height .3s ease-in-out;
 }
-.city-skyline .location{
+
+.location{
   margin-right:.5rem;
   width: rem-calc(36);
 }
