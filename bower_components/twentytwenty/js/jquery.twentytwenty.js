@@ -13,8 +13,8 @@
       
       container.wrap("<div class='twentytwenty-wrapper twentytwenty-" + sliderOrientation + "'></div>");
       container.append("<div class='twentytwenty-overlay'></div>");
-      var beforeImg = container.find("img:first");
-      var afterImg = container.find("img:last");
+      var beforeImg = container.find(":nth-child(1)");
+      var afterImg = container.find(":nth-child(2)");
       container.append("<div class='twentytwenty-handle'></div>");
       var slider = container.find(".twentytwenty-handle");
       slider.append("<span class='twentytwenty-" + beforeDirection + "-arrow'></span>");
@@ -39,12 +39,12 @@
       };
 
       var adjustContainer = function(offset) {
-      	if (sliderOrientation === 'vertical') {
-      	  beforeImg.css("clip", "rect(0,"+offset.w+","+offset.ch+",0)");
-      	}
-      	else {
+        if (sliderOrientation === 'vertical') {
+          beforeImg.css("clip", "rect(0,"+offset.w+","+offset.ch+",0)");
+        }
+        else {
           beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
-    	}
+      }
         container.css("height", offset.h);
       };
 

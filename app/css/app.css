@@ -4205,7 +4205,7 @@ nav {
   background-color: #323232;
   color: #fefefe;
   margin-top: 0;
-  padding: 4rem 0; }
+  padding: 6rem 0; }
 
 .footer {
   color: #323232;
@@ -4276,11 +4276,17 @@ nav {
   border-radius: 0%; }
 
 .sessions {
-  margin-top: 3rem;
+  margin-top: 2rem;
   text-align: center; }
   .sessions img {
-    height: 5rem;
-    width: 5rem; }
+    height: 4rem;
+    width: 4rem; }
+
+.city-skyline {
+  margin-top: 1rem; }
+
+section.round-image img {
+  border-radius: 0; }
 
 .dowork {
   margin-bottom: 6rem; }
