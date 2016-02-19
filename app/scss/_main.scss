@@ -331,9 +331,14 @@ nav {
 .city-skyline {
   margin-top:1rem;
 }
-.city-skyline img{
+.city-skyline .location{
   margin-right:.5rem;
   width: rem-calc(36);
+}
+
+.city-skyline h5{
+  color: #018571;
+
 }
 section.round-image img{
   border-radius: 0;
