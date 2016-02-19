@@ -150,8 +150,13 @@ section {
   margin-top: 3rem;
 
   > div {
-    opacity:0;
+    // opacity:0;
   }
+}
+
+.role {
+  height: 100px;
+  width: 100px;
 }
 
 .research {
