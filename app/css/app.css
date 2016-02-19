@@ -4242,7 +4242,7 @@ nav {
   border-radius: 0%; }
 
 .sessions {
-  margin-top: 6rem;
+  margin-top: 3rem;
   text-align: center; }
   .sessions img {
     height: 5rem;
@@ -4260,7 +4260,13 @@ nav {
   padding-bottom: 2rem; }
 
 .overview {
-  padding-bottom: 4rem; }
+  margin-top: 0;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: #F1F3F4; }
+
+.overview h5 {
+  margin-top: 0.75rem; }
 
 .button.hollow {
   color: #006c5d;
