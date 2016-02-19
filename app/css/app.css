@@ -4116,22 +4116,26 @@ input:focus {
 /* End Helpers */
 /* Highest level shit */
 body {
-  color: #323232; }
+  color: #323232;
+  overflow-x: hidden; }
 
 #hero {
   width: 100%;
   height: calc(100vh - 70px);
   max-height: 1000px; }
   #hero .title {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     position: absolute;
-    top: calc((100% - 70px)/2);
-    left: 50%;
+    height: calc(100% - 70px);
     width: 100%;
-    max-width: 800px;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     z-index: 30;
     user-drag: none;
     -webkit-user-select: none;
@@ -4144,6 +4148,9 @@ body {
     #hero .title h3 {
       text-align: center;
       color: #fff; }
+    #hero .title img {
+      width: 100%;
+      max-width: 800px; }
 
 #hero-slider {
   height: calc(100vh - 70px) !important;

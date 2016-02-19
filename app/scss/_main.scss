@@ -72,6 +72,7 @@ input:focus {
 /* Highest level shit */
 body{
   color:#323232;
+  overflow-x: hidden;
 }
 
 #hero {
@@ -80,15 +81,13 @@ body{
   max-height: 1000px;
 
   .title {
-    position: absolute;
-    top: calc((100% - 70px)/2);
-    left: 50%;
-    width: 100%;
-    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+    position: absolute;
+    height: calc(100% - 70px);
+    width: 100%;
 
     z-index: 30;
 
@@ -99,9 +98,16 @@ body{
     -webkit-user-select: none;
     -ms-user-select: none;
 
+    // background-color: rgba(0, 180, 160, .3);
+
     h3 {
       text-align: center;
       color: #fff;
+    }
+
+    img {
+      width: 100%;
+      max-width: 800px;
     }
   }
 }
