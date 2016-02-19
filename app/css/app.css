@@ -4277,6 +4277,10 @@ nav {
 #overview h3 {
   color: #5AA700; }
 
+#overview h6 {
+  font-size: 1.5rem;
+  line-height: 3rem; }
+
 #eq h3 {
   color: #00B4A0; }
 
@@ -4335,6 +4339,8 @@ p.fun-fact {
   text-align: center; }
   .footer .social-links .icon-bg-color {
     fill: #586464; }
+  .footer .social-links .icon-bg-color {
+    fill: #586464; }
   .footer .made-by {
     margin-top: 1rem;
     margin-bottom: 5rem; }
@@ -4351,7 +4357,8 @@ p.fun-fact {
         -ms-flex-pack: justify;
             justify-content: space-between; }
   .footer .text-links a {
-    color: #323232; }
+    color: #323232;
+    font-size: .9rem; }
     .footer .text-links a:hover {
       border-bottom: 2px solid #323232; }
   .footer .social-links .social-link {
