@@ -461,3 +461,20 @@ button.shuffle {
   margin-top: 2rem;
 }
 /* End Interior styles */
+
+/* media queries */
+@include breakpoint(small down) {
+  .twentytwenty-handle {
+    display: none;
+  }
+
+  #hero-slider {
+    img {
+      clip: initial !important;
+    }
+
+    video {
+      display: none;
+    }
+  }
+}
