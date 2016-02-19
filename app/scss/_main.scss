@@ -255,7 +255,7 @@ nav {
 
 
 .sessions {
-  margin-top: 6rem;
+  margin-top: 3rem;
   text-align: center;
 
   img {
@@ -279,7 +279,13 @@ nav {
 }
 
 .overview{
-  padding-bottom: 4rem;
+  margin-top: 0;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: #F1F3F4;
+}
+.overview h5{
+  margin-top: rem-calc(12);
 }
 .button.hollow{
   color: #006c5d;
