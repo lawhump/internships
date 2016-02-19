@@ -1593,7 +1593,7 @@ textarea {
   margin: 0 0 1rem;
   font-family: inherit;
   font-size: 1rem;
-  color: #0a0a0a;
+  color: #fefefe;
   background-color: #454D56;
   box-shadow: inset 0 0px 0px rgba(10, 10, 10, 0.1);
   border-radius: 0;
@@ -1735,7 +1735,7 @@ select {
   font-size: 1rem;
   font-family: inherit;
   line-height: normal;
-  color: #0a0a0a;
+  color: #fefefe;
   background-color: #fefefe;
   border-radius: 0;
   -webkit-appearance: none;
@@ -4121,7 +4121,8 @@ section {
   border-top: 0px solid #cacaca !important;
   border-left: 0px solid #cacaca !important;
   border-bottom: 1px solid #cacaca;
-  border-right: 0px solid #cacaca !important; }
+  border-right: 0px solid #cacaca !important;
+  height: 3.9375rem; }
 
 input:focus {
   border-bottom: 1px solid #08B49F !important; }
@@ -4308,6 +4309,9 @@ p.fun-fact {
 
 .alums {
   color: #022B22; }
+
+.alums h3 {
+  margin-bottom: 0; }
 
 #work {
   background-color: #f1f3f4;
@@ -4521,6 +4525,9 @@ section.round-image img {
 
 button.shuffle {
   margin-top: 2rem; }
+
+.alums button.shuffle {
+  margin-top: 0; }
 
 /* End Interior styles */
 /* media queries */
