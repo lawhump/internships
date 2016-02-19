@@ -8,11 +8,11 @@ var scroll = function() {
   // console.log('bottom_of_window='+bottom_of_window);
 
   // Hard coded. I know there's a more elegant way but we only have two days
-  if (bottom_of_window > 2570) {
+  if (bottom_of_window > 3600) {
     $('.roles').addClass('is-animating');
   }
 
-  if (bottom_of_window > 3900) {
+  if (bottom_of_window > 3000) {
     $('.sessions').addClass('is-animating');
   }
 };
