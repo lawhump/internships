@@ -4288,7 +4288,8 @@ nav {
 /* Interior styles */
 .roles {
   margin-top: 3rem;
-  margin-bottom: 3rem; }
+  margin-bottom: 3rem;
+  color: #41D6C3; }
 
 .role {
   height: 100px;
