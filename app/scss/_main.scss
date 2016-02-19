@@ -66,7 +66,12 @@ section {
 /* End Helpers */
 
 
+
+
 /* Highest level shit */
+body{
+  color:#323232;
+}
 
 #hero {
   width: 100%;
@@ -104,11 +109,13 @@ section {
     margin: 5rem 0 2rem 0;
   }
 }
+.menu-text{
+  font-weight: normal;
+}
 
-.overview {
+#overview {
   background-color: #f1f3f4;
-  padding: 6rem 0;
-  margin-top: 0;
+  padding-bottom: 3rem;
 }
 
 .form {
@@ -217,6 +224,7 @@ section {
   text-align: center;
 }
 
+
 .other {
   border-radius: 0%;
 }
@@ -239,6 +247,7 @@ section {
 #band{
   padding: 4rem 0;
   background-color:#8cd211;
+  margin-top: 0;
 
 }
 #band h5{
