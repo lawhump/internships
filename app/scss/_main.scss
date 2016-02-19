@@ -247,6 +247,10 @@ nav {
 #overview h3{
   color: #5AA700;
 }
+#overview h6{
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
 #eq h3{
   color: #00B4A0;
 }
@@ -270,6 +274,7 @@ p.fun-fact{
 .overview h3{
   color: #003C32;
 }
+
 .form h3{
   color: #41D6C3;
 }
@@ -313,9 +318,6 @@ p.fun-fact{
   text-align: center;
 }
 
-.footer-items{
-  font-size: .9rem;
-}
 .footer .social-links .icon-bg-color {
   fill: #586464;
 }
@@ -338,6 +340,7 @@ p.fun-fact{
   .text-links {
     a {
       color: $dark-gray;
+      font-size: .9rem;
 
       &:hover {
         border-bottom: 2px solid $dark-gray;

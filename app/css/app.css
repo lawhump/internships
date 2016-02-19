@@ -4273,6 +4273,10 @@ nav {
 #overview h3 {
   color: #5AA700; }
 
+#overview h6 {
+  font-size: 1.5rem;
+  line-height: 3rem; }
+
 #eq h3 {
   color: #00B4A0; }
 
@@ -4330,9 +4334,6 @@ p.fun-fact {
   padding: 1rem 0 1rem;
   text-align: center; }
 
-.footer-items {
-  font-size: .9rem; }
-
 .footer .social-links .icon-bg-color {
   fill: #586464; }
 
@@ -4355,7 +4356,8 @@ img {
           justify-content: space-between; }
 
 .text-links a {
-  color: #323232; }
+  color: #323232;
+  font-size: .9rem; }
   .text-links a:hover {
     border-bottom: 2px solid #323232; }
 
