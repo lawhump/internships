@@ -1,9 +1,47 @@
+@include mui-series {
+  .research {
+    @include mui-queue(.3s, 0s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  // A 2s pause will happen after this animation ends
+  .ui {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  // It works with multiple effects, too!
+  .ux {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  .fed {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+}
+
+@include mui-series {
+  .equinox {
+    @include mui-queue(.3s, 0s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  .solstice {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  .swelter {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+}
+
 section {
   margin-top: 4rem;
 
   &.round-image img {
     border-radius: 50%;
   }
+}
+
+[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
+  border-bottom: 1px solid $medium-gray;
 }
 
 /* Helpers */
@@ -24,7 +62,12 @@ section {
 /* End Helpers */
 
 
+
+
 /* Highest level shit */
+body{
+  color:#323232;
+}
 
 #hero {
   width: 100%;
@@ -86,9 +129,10 @@ section {
 }
 
 .nav {
-  background-color: #eee;
+  background-color: #fff;
+  border-bottom: 1px solid #DFE9E9;
   overflow: hidden;
-  padding: 1rem 0;
+  padding: .7rem 0;
   width: 100%;
   z-index: 10;
 }
@@ -106,17 +150,37 @@ section {
 
 .selling-points {
   h3 {
-    margin: 2rem 0;
+    margin: 5rem 0 2rem 0;
   }
 }
+nav {
+  background: none;
+  border-bottom: 1px solid #DFE9E9;
+}
+.top-bar-left li{
+  font-size: 1.2rem;
+}
+.menu-text{
+  font-weight: normal;
+}
+.top-bar-right li a{
+  color: #323232;
+}
+.top-bar-right li a.active{
+  color: #5AA700;
+  font-weight: bold;
+}
 
-.overview {
-  background-color: #ddd;
-  padding: 3rem 0;
+#work{
+  background-color: #f1f3f4;
+  padding-bottom: 3rem;
 }
 
 .form {
-  text-align: center;
+  background-color: $dark-gray;
+  color: $white;
+  margin-top: 0;
+  padding: 4rem 0;
 }
 
 .footer {
@@ -187,7 +251,7 @@ section {
 /* Interior styles */
 .roles {
   margin-top: 3rem;
-
+  margin-bottom: 3rem;
   > div {
     // opacity:0;
   }
@@ -217,6 +281,12 @@ section {
 .roles :not(p) {
   text-align: center;
 }
+.apply-btn {
+  margin-top: 3rem;
+}
+.name-input{
+  margin-top: 2rem;
+}
 
 .other {
   border-radius: 0%;
@@ -224,13 +294,41 @@ section {
 
 
 .sessions {
-  margin-top: 6rem;
+  margin-top: 3rem;
   text-align: center;
 
   img {
     height: 5rem;
     width: 5rem;
   }
+}
+
+.dowork {
+  margin-bottom: 6rem;
+}
+
+#band{
+  padding: 4rem 0;
+  background-color:#8cd211;
+  margin-top: 0;
+
+}
+#band h4{
+  padding-bottom: 2rem;
+}
+
+.overview{
+  margin-top: 0;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: #F1F3F4;
+}
+.overview h5{
+  margin-top: rem-calc(12);
+}
+.button.hollow{
+  color: #006c5d;
+  border: 2px solid #006c5d;
 }
 
 .intro {

@@ -1,0 +1,1755 @@
+/*
+ * Styles that apply across multiple pages.
+ */
+
+/**********************************************************************************************************************/
+/* Browser fixes                                                                                                      */
+/**********************************************************************************************************************/
+@mixin design-inline-block() {
+	display: inline-block;
+}
+
+@mixin design-opacity($opacityreal, $opacitypercent) {
+  filter: alpha(opacity=$opacitypercent);  // IE7
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacitypercent);  // IE8
+  -moz-opacity: $opacityreal;  // mozilla
+  -khtml-opacity: $opacityreal;  // old safari
+  opacity: $opacityreal;
+}
+
+@mixin design-opacity($opacity) {
+	@include design-opacity($opacity, $opacity*100);
+}
+
+/**********************************************************************************************************************/
+/* Color and font general mixins                                                                                      */
+/**********************************************************************************************************************/
+
+/* tweak font smoothing when setting colors, as OSX default rendering of light text on dark backgrounds is poor */
+/* these options are based on the info in: http://maximilianhoffmann.com/posts/better-font-rendering-on-osx */
+@mixin design-apply-color-dark-on-light($color, $dummy: dummy) {
+	color: $color;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: auto;
+	text-shadow: none;
+}
+@mixin design-apply-color-dark-on-light($color) {
+	color: $color !important;
+}
+@mixin design-apply-color-light-on-dark($color, $dummy: dummy) {
+	color: $color;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-shadow: none;
+}
+@mixin design-apply-color-light-on-dark($color) {
+	color: $color !important;
+}
+@mixin design-apply-color($color, $important: false) {
+	@include design-apply-color-dark-on-light($color);
+}
+@mixin design-apply-color($color, $important: false) {
+
+  @if lightness($color) >= 50% {
+    @include design-apply-color-light-on-dark($color);
+  }
+}
+
+/* set font styles: light, regular or bold */
+@mixin design-apply-font-light() {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "HelvLightIBM", Arial, sans-serif;
+	font-weight: lighter;
+}
+@mixin design-apply-font-regular() {
+	font-family: "HelveticaNeue", "Helvetica Neue", "HelvRegularIBM", Arial, sans-serif;
+	font-weight: normal;
+
+	html.designFontCorrectBaseline & {
+		font-family: "HelveticaNeue", "Helvetica Neue", Arial, sans-serif;
+	}
+}
+@mixin design-apply-font-bold() {
+	font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", "HelvBoldIBM", Arial, sans-serif;
+	font-weight: bold;
+}
+@mixin design-apply-font-size($font-size, $line-height: normal) {
+	font-size: $font-size;
+	line-height: $line-height;
+}
+
+#ibm-pcon p b,
+#ibm-pcon p strong {
+	@include design-apply-font-bold();
+}
+
+
+/**********************************************************************************************************************/
+/* V17e adjustments                                                                                                   */
+/**********************************************************************************************************************/
+
+/* we clear the transform rather than just zero it, because it prevents position:fixed from working on webkit */
+.m-shift {
+	-webkit-transform: none;
+	-moz-transform: none;
+	-o-transform: none;
+	-ms-transform: none;
+	transform: none;
+}
+
+/* mobile menu randomly shows up on IE7 for some reason */
+.dj_ie7 #m-menu,
+.dj_ie8 #m-menu,
+.dj_ie9 #m-menu {
+	display: none;
+}
+
+/* help the footer modules lay themselves out a bit more neatly */
+#ibm-footer-module .ibm-columns .ibm-col-6-1 {
+	min-height: 215px;
+}
+
+/* we're not using the leadspace, as the hero area is the first block of the body */
+#ibm-leadspace-body {
+	min-height: 0;
+	padding: 0;
+}
+
+/* we use an h1 in the leadspace to establish the page name for the mobile menu, but don't want it visible */
+#ibm-leadspace-body h1 {
+	display: none;
+}
+
+.ibm-landing-page #ibm-pcon {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+#ibm-footer-module,
+#ibm-footer,
+#ibm-related-content {
+	position: relative;
+	z-index: 2;
+}
+
+/**********************************************************************************************************************/
+/* Styles for the navigation tabs                                                                                     */
+/**********************************************************************************************************************/
+
+#ibm-top .design-common-fixed-marker {
+	position: absolute;
+	top: auto;
+}
+
+#ibm-access-cntr {
+	position: relative;
+}
+
+#ibm-content-nav {
+	position: absolute;
+	width: 100%;
+	z-index: 3;
+	margin-top: 20px;
+	@include design-apply-color(#000);
+}
+
+/* primary tabs: used in tablet/desktop widths (>568px) */
+/* mobile tabs: used for phone widths (<568px) */
+
+#ibm-content-nav #ibm-primary-tabs,
+#ibm-content-nav #ibm-mobile-tabs {
+	background: none;
+	background-color: #fff;
+	-webkit-transition: background-color 0.3s;
+	-moz-transition: background-color 0.3s;
+	-o-transition: background-color 0.3s;
+	-ms-transition: background-color 0.3s;
+	transition: background-color 0.3s;
+}
+
+:root.dj_gecko30 #ibm-content-nav #ibm-mobile-tabs div,
+:root.dj_gecko31 #ibm-content-nav #ibm-mobile-tabs div,
+:root.dj_gecko32 #ibm-content-nav #ibm-mobile-tabs div {
+	// hopefully fixed by 33
+	overflow: hidden;
+}
+:root.dj_gecko30 #ibm-content-nav #ibm-mobile-tabs div select,
+:root.dj_gecko31 #ibm-content-nav #ibm-mobile-tabs div select,
+:root.dj_gecko32 #ibm-content-nav #ibm-mobile-tabs div select {
+	// hopefully fixed by 33
+	max-width: calc(100% + 35px); // ~'prevents less processing which is wrong (135%)'
+	width: calc(100% + 35px); // 35px same as padding pushes icon off page right
+}
+
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs,
+.design-common-tabs-white#ibm-content-nav #ibm-mobile-tabs,
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs,
+.design-common-tabs-black#ibm-content-nav #ibm-mobile-tabs,
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs,
+.design-common-tabs-invisible#ibm-content-nav #ibm-mobile-tabs {
+	background-color: transparent;
+}
+
+#ibm-content-nav #ibm-primary-tabs {
+	padding: 12px 0;
+	overflow: hidden;
+	text-align: right;
+}
+
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li {
+	margin: 0 0 0 60px;
+	margin-left: 6rem;
+	padding-top: 6px;
+	padding-top: 0.6rem;
+	bottom: auto;
+	@include design-inline-block();
+	float: none;
+	border: none;
+	background-color: transparent;
+	-webkit-transition: color 0.3s, border-color 0.3s;
+	-moz-transition: color 0.3s, border-color 0.3s;
+	-o-transition: color 0.3s, border-color 0.3s;
+	-ms-transition: color 0.3s, border-color 0.3s;
+	transition: color 0.3s, border-color 0.3s;
+	@include design-apply-color(#000);
+
+	@media only screen and (min-width: 0) and (max-width: 600px) {
+		margin: 0 0 0 30px;
+		margin-left: 3rem;
+	}
+	@media only screen and (min-width: 601px) and (max-width: 640px) {
+		margin: 0 0 0 40px;
+		margin-left: 4rem;
+	}
+}
+
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li:hover,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li:focus,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active:hover,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active:focus {
+	border-top: none;
+	border-bottom: 2px solid #000;
+}
+
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li,
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active {
+	@include design-apply-color(#fff);
+	border-bottom-color: #fff;
+}
+
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li,
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active {
+	@include design-apply-color(#000);
+	border-bottom-color: #000;
+}
+
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li,
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active {
+	color: transparent;
+	text-shadow: none;
+	border-bottom-color: transparent;
+}
+
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li:first-of-type {
+	display: none;
+}
+
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active a,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:hover,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:focus,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:visited,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active a:hover,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active a:focus,
+#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li.ibm-active a:visited {
+	display: block;
+	border: none;
+	min-height: 15px;
+	padding: 12px 0px 8px;
+	background-color: transparent;
+	@include design-opacity(1);
+	text-shadow: none;
+	text-decoration: none;
+	@include design-apply-font-regular();
+	font-size: 17px;
+	font-size: 1.7rem;
+	@include design-apply-color(#000);
+}
+
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a,
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active,
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:hover,
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active:hover,
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:focus,
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active:focus,
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:visited,
+.design-common-tabs-white#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active:visited {
+	@include design-apply-color(#fff);
+	border-bottom-color: #fff;
+}
+
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a,
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active,
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:hover,
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active:hover,
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:focus,
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active:focus,
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:visited,
+.design-common-tabs-black#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active:visited {
+	@include design-apply-color(#000);
+	border-bottom-color: #000;
+}
+
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a,
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active,
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:hover,
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active:hover,
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:focus,
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active:focus,
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a:visited,
+.design-common-tabs-invisible#ibm-content-nav #ibm-primary-tabs ul.ibm-tabs li a.ibm-active:visited {
+	color: transparent;
+	text-shadow: none;
+	border-bottom-color: transparent;
+}
+
+
+#ibm-content-nav #ibm-mobile-tabs.ibm-menu-list {
+	width: 100%;
+	padding: none;
+}
+
+#ibm-content-nav #ibm-mobile-tabs.ibm-menu-list div {
+	padding: 11.5px;
+}
+
+:root.dj_ie #ibm-content-nav #ibm-mobile-tabs.ibm-menu-list div:after {
+	display: none;
+}
+
+#ibm-content-nav #ibm-mobile-tabs.ibm-menu-list div:after {
+	// 3 pixels higher than IBM Design + larger font to
+	// match the vertical positioning and height of D in design.
+	top: 21px;
+	font-size: 25px;
+	font-size: 2.5rem;
+}
+
+.design-common-tabs-white .ibm-menu-list div:after {
+	@include design-apply-color(#fff);
+}
+
+.design-common-tabs-black .ibm-menu-list div:after {
+	@include design-apply-color(#000);
+}
+
+.design-common-tabs-invisible .ibm-menu-list div:after {
+	color: transparent;
+	text-shadow: none;
+}
+
+#ibm-content-nav #ibm-mobile-tabs div select {
+	background: transparent;
+	border: none;
+	border-radius: none;
+	box-shadow: none;
+	text-shadow: none;
+	color: transparent;
+}
+
+#ibm-content-nav #ibm-mobile-tabs div select option{
+	@include design-apply-color(#000);
+}
+
+/* IBM Design logo */
+
+:root.dj_ie #design-common-mobile-nav-title {
+	display:none !important;
+}
+
+#design-common-primary-nav-title,
+#design-common-mobile-nav-title {
+	top: 24px;
+	@include design-apply-color(#000);
+	display: inline-block;
+	position: absolute;
+	@include design-apply-font-regular();
+	font-size: 22px;
+	font-size: 2.2rem;
+	line-height: 22px;
+	line-height: 2.2rem;
+	word-spacing: -0.08em;
+}
+
+#design-common-primary-nav-title {
+	padding-bottom: 8px;
+}
+
+#design-common-mobile-nav-title {
+	left: 28px;
+	pointer-events: none;
+}
+
+.design-common-tabs-white #design-common-primary-nav-title,
+.design-common-tabs-white #design-common-mobile-nav-title {
+	@include design-apply-color(#fff);
+}
+
+.design-common-tabs-black #design-common-primary-nav-title,
+.design-common-tabs-black #design-common-mobile-nav-title {
+	@include design-apply-color(#000);
+}
+
+.design-common-tabs-invisible #design-common-primary-nav-title,
+.design-common-tabs-invisible #design-common-mobile-nav-title {
+	color: transparent;
+	text-shadow: none;
+}
+
+#design-common-primary-nav-title a,
+#design-common-primary-nav-title a:hover,
+#design-common-primary-nav-title a:focus,
+#design-common-primary-nav-title a:visited {
+	border: none;
+	min-height: 15px;
+	background-color: transparent;
+	@include design-opacity(1);
+	text-decoration: none;
+	@include design-apply-color(#000);
+}
+
+.design-common-tabs-white #design-common-primary-nav-title a,
+.design-common-tabs-white #design-common-mobile-nav-title a,
+.design-common-tabs-white #design-common-primary-nav-title a:hover,
+.design-common-tabs-white #design-common-mobile-nav-title a:hover,
+.design-common-tabs-white #design-common-primary-nav-title a:focus,
+.design-common-tabs-white #design-common-mobile-nav-title a:focus,
+.design-common-tabs-white #design-common-primary-nav-title a:visited,
+.design-common-tabs-white #design-common-mobile-nav-title a:visited {
+	@include design-apply-color(#fff);
+}
+
+.design-common-tabs-black #design-common-primary-nav-title a,
+.design-common-tabs-black #design-common-mobile-nav-title a,
+.design-common-tabs-black #design-common-primary-nav-title a:hover,
+.design-common-tabs-black #design-common-mobile-nav-title a:hover,
+.design-common-tabs-black #design-common-primary-nav-title a:focus,
+.design-common-tabs-black #design-common-mobile-nav-title a:focus,
+.design-common-tabs-black #design-common-primary-nav-title a:visited,
+.design-common-tabs-black #design-common-mobile-nav-title a:visited {
+	@include design-apply-color(#000);
+}
+
+.design-common-tabs-invisible #design-common-primary-nav-title a,
+.design-common-tabs-invisible #design-common-mobile-nav-title a,
+.design-common-tabs-invisible #design-common-primary-nav-title a:hover,
+.design-common-tabs-invisible #design-common-mobile-nav-title a:hover,
+.design-common-tabs-invisible #design-common-primary-nav-title a:focus,
+.design-common-tabs-invisible #design-common-mobile-nav-title a:focus,
+.design-common-tabs-invisible #design-common-primary-nav-title a:visited,
+.design-common-tabs-invisible #design-common-mobile-nav-title a:visited {
+	color: transparent;
+	text-shadow: none;
+}
+
+#design-common-primary-nav-title em,
+#design-common-mobile-nav-title em {
+	@include design-apply-font-bold();
+	font-style: normal;
+}
+
+
+/**********************************************************************************************************************/
+/* Styles for the hero bands                                                                                          */
+/**********************************************************************************************************************/
+
+.ibm-band {
+	position: relative;
+	z-index: 2;
+	background-color: #fff;
+}
+
+.ibm-band:nth-child(2n) {
+	background-color: #fff;
+}
+
+#ibm-content .design-common-hero-band-placeholder {
+	background-color: transparent;
+	@include design-opacity(0);
+	pointer-events: none;
+}
+
+#ibm-content-body {
+	position: relative;
+}
+
+.design-common-hero-band {
+	width: 100%;
+	background-size: cover;
+	height: 390px;
+	@include design-apply-color(#fff);
+	overflow: hidden;
+}
+
+@media only screen and (min-width: 801px) {
+	.design-common-hero-band,
+	#ibm-content-nav {
+		min-width: 980px;
+	}
+}
+
+@media only screen and (min-width: 769px) and (max-width: 800px) {
+	.design-common-hero-band,
+	#ibm-content-nav {
+		width: 800px;
+	}
+}
+
+@media only screen and (min-width: 641px) and (max-width: 768px) {
+	.design-common-hero-band,
+	#ibm-content-nav {
+		width: 768px;
+	}
+}
+
+@media only screen and (min-width: 601px) and (max-width: 640px) {
+	.design-common-hero-band,
+	#ibm-content-nav {
+		width: 640px;
+	}
+}
+
+@media only screen and (min-width: 569px) and (max-width: 600px) {
+	.design-common-hero-band,
+	#ibm-content-nav {
+		width: 600px;
+	}
+}
+
+.design-common-hero-band h2 {
+	font-size: 58px;
+	line-height: 1.15em;
+	margin-bottom: 16px;
+	@include design-apply-color(#fff);
+}
+
+#ibm-content .design-common-hero-band p {
+	font-size: 22px;
+	line-height: 1.15em;
+	@include design-apply-color(#fff);
+	margin-bottom: 16px;
+}
+
+.design-common-hero-band a {
+	display: inline-block;
+	border: 3px solid #fff;
+	padding: 18px 30px;
+	font-size: 24px;
+	text-decoration: none;
+	@include design-apply-color(#fff);
+}
+
+.design-common-hero-band-placeholder {
+	height: 390px;
+}
+
+
+/**********************************************************************************************************************/
+/* Styles for the inline console block                                                                                */
+/**********************************************************************************************************************/
+
+#design-inline-console {
+	min-height: 0;
+}
+
+#design-inline-console .ibm-columns {
+	background-color: #eeeeee;
+	border: 1px solid red;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#design-inline-console .ibm-col-1-1 {
+	@include design-apply-font-regular();
+	@include design-apply-font-size(12px);
+}
+
+
+/**********************************************************************************************************************/
+/* Styles for the inline social block                                                                                 */
+/**********************************************************************************************************************/
+
+#design-inline-social {
+	min-height: 0;
+}
+
+#design-inline-social .ibm-columns {
+	background-color: #eeffdd;
+	border: 1px solid red;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#design-inline-social .ibm-col-1-1 {
+	@include design-apply-font-regular();
+	@include design-apply-font-size(12px);
+}
+
+#design-inline-social-entries h3 {
+	@include design-apply-font-size(16px);
+	margin-top: 1em;
+}
+
+.design-inline-social-entry {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	border-top: 1px solid #dddddd;
+}
+
+.design-inline-social-entry:last-of-type {
+	border-bottom: 1px solid #dddddd;
+}
+
+.design-inline-social-entry-name {
+	display: inline-block;
+	width: 14em;
+	vertical-align: top;
+}
+
+.design-inline-social-entry-contents {
+	display: inline-block;
+	width: calc(100% - 14em - 14em);
+	vertical-align: top;
+}
+
+.design-inline-social-entry-content img {
+	vertical-align: top;
+	margin-left: 1em;
+}
+
+.design-inline-social-entry-content a img {
+	width: 120px;
+	margin-left: 2em;
+	margin-bottom: 0.2em;
+}
+
+.design-inline-social-size {
+	margin-left: 2em;
+	font-style: italic;
+	@include design-apply-color(#666);
+}
+
+.design-inline-social-entry-notes {
+	display: inline-block;
+	width: 12em;
+	vertical-align: top;
+	@include design-apply-color(#666);
+	padding-left: 2em;
+}
+
+
+/**********************************************************************************************************************/
+/* Styles for the inline performance block                                                                            */
+/**********************************************************************************************************************/
+
+#design-inline-performance {
+	min-height: 0;
+}
+
+#design-inline-performance .ibm-columns {
+	background-color: #ddeeff;
+	border: 1px solid red;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#design-inline-performance .ibm-col-1-1 {
+	@include design-apply-font-regular();
+	@include design-apply-font-size(12px);
+}
+
+.design-inline-performance-heading {
+	background-color: #eee;
+}
+
+.design-inline-performance-entry {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	border-top: 1px solid #dddddd;
+}
+
+.design-inline-performance-total {
+	background-color: #eee;
+}
+
+.design-inline-performance-url {
+	display: inline-block;
+	width: calc(100% - 7em - 7em);
+	vertical-align: top;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.design-inline-performance-url-local {
+	@include design-apply-font-bold();
+}
+
+.design-inline-performance-time {
+	display: inline-block;
+	margin-left: 2em;
+	width: 5em;
+	vertical-align: top;
+}
+
+.design-inline-performance-time .design-inline-performance-integer {
+	width: 3em;
+	display: inline-block;
+	text-align: right;
+}
+
+.design-inline-performance-size {
+	display: inline-block;
+	margin-left: 2em;
+	width: 5em;
+	vertical-align: top;
+	text-align: right;
+}
+
+.design-inline-performance-total .design-inline-performance-url {
+	padding-top: 6px;
+}
+
+.design-inline-performance-total .design-inline-performance-size {
+	padding-top: 4px;
+	border-top: 2px solid black;
+}
+
+
+/**********************************************************************************************************************/
+/* Styles for the inline diagnostic block                                                                             */
+/**********************************************************************************************************************/
+
+#design-inline-diagnostic {
+	min-height: 0;
+}
+
+#design-inline-diagnostic .ibm-columns {
+	background-color: #ffeedd;
+	border: 1px solid red;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#design-inline-diagnostic .ibm-col-1-1 {
+	@include design-apply-font-regular();
+	@include design-apply-font-size(12px);
+}
+
+.design-inline-diagnostic-entry {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	border-top: 1px solid #dddddd;
+}
+
+.design-inline-diagnostic-name {
+	display: inline-block;
+	width: 14em;
+	vertical-align: top;
+}
+
+.design-inline-diagnostic-value {
+	display: inline-block;
+	margin-left: 2em;
+	width: calc(100% - 14em - 2em);
+	vertical-align: top;
+}
+
+/*
+ * Styles specific to the careers page.
+ */
+
+/**********************************************************************************************************************/
+/* Less constants                                                                                                     */
+/**********************************************************************************************************************/
+$error-red: #f55146;
+$focus-blue: #00b2ef;
+$mid-blue: #008abf;
+$dark-gray: #b4b7bb;
+$other-gray: #b3b3b3;
+$full-white: #fff;
+$almost-black: #454d56;
+$light-red: #ff0000;
+$mustard-yellow: #ffcd04;
+
+
+$border-nofocus: 2px solid $other-gray;
+$border-unselected-focus: 2px solid $focus-blue;
+$border-selected: 2px solid $focus-blue;
+$border-selected-focus: 2px solid $mid-blue;
+$border-text-focus: 1px solid $full-white;
+
+
+#ibm-com.design-page-careers #ibm-content #ibm-content-main {
+
+	#design-careers-hero {
+		background-image: none;
+		background-color: $mustard-yellow;
+		padding-top: 240px;
+		height: 527px;
+	}
+
+	@media only screen and (min-width: 641px) and (max-width: 800px) {
+		#design-careers-hero {
+			padding-top: 200px;
+			height: 567px;
+		}
+	}
+
+	@media only screen and (min-width: 569px) and (max-width: 640px) {
+		#design-careers-hero {
+			padding-top: 180px;
+			height: 587px;
+		}
+
+		#design-careers-hero .ibm-col-4-2 {
+			width: 520px;
+		}
+
+		#design-careers-hero h2 {
+			text-align: left;
+		}
+	}
+
+	#design-careers-hero-placeholder {
+		height: 752px;
+	}
+
+	#design-careers-hero h2 {
+		@include design-apply-color($almost-black);
+		font-size: 40px;
+		line-height: 1.15em;
+		@include design-apply-font-bold();
+		text-align: right;
+		margin-right: 20px;
+	}
+
+	@media only screen and (min-width: 569px) and (max-width: 640px) {
+		#design-careers-hero h2 {
+			text-align: left;
+		}
+	}
+
+	@media only screen and (min-width: 0) and (max-width: 568px) {
+		#design-careers-hero {
+			padding-top: 117px;
+			height: 684px;
+		}
+
+		#design-careers-hero-placeholder {
+			height: 786px;
+		}
+
+		#design-careers-hero h2 {
+			font-size: 31px;
+			line-height: 36px;
+			text-align: left;
+		}
+	}
+
+	#design-careers-hero p {
+		@include design-apply-color($almost-black);
+		font-size: 16px;
+		line-height: 21px;
+		@include design-apply-font-regular();
+	}
+	#design-careers-hero p#ibm-design-mission-hero-text-first {
+		padding-top: 5px; // line up with top of heading to left
+	}
+
+	#design-careers-hero a {
+		display: block;
+		float: left;
+		@include design-apply-color($almost-black);
+		font-size: 16px;
+		line-height: 20px;
+		border: 2px solid $almost-black;
+		padding: 10px 15px;
+		text-decoration: none;
+		@include design-apply-font-bold();
+	}
+
+	#design-careers-hero a:hover {
+		@include design-apply-color($mustard-yellow);
+		background-color: $almost-black;
+		transition: all 0.3s;
+	}
+
+	#design-careers-roles-colourband {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		height: 653px;
+		background-color: #ecf8f7;
+	}
+
+	#design-careers-roles .ibm-container.ibm-ribbon {
+		border-top: none;
+		width: 980px;
+	}
+
+	#design-careers-roles .ibm-container.ibm-ribbon .ibm-columns {
+		width: 980px;
+		margin-left: 0;
+		padding-left: 30px;
+	}
+
+	@media only screen and (min-width: 641px) and (max-width: 800px) {
+		#design-careers-roles .ibm-container.ibm-ribbon,
+		#design-careers-roles .ibm-container.ibm-ribbon .ibm-columns {
+			width: 680px;
+		}
+	}
+
+	@media only screen and (min-width: 569px) and (max-width: 640px) {
+		#design-careers-roles .ibm-container.ibm-ribbon,
+		#design-careers-roles .ibm-container.ibm-ribbon .ibm-columns {
+			width: 560px;
+		}
+	}
+
+	@media only screen and (min-width: 0) and (max-width: 568px) {
+		#design-careers-roles .ibm-container.ibm-ribbon,
+		#design-careers-roles .ibm-container.ibm-ribbon .ibm-columns {
+			width: 320px;
+		}
+
+		#design-careers-roles .ibm-container.ibm-ribbon .ibm-columns {
+			width: 320px;
+			padding-left: 15px;
+		}
+	}
+
+	#design-careers-roles .ibm-ribbon-prev,
+	#design-careers-roles .ibm-ribbon-next {
+		display: none;
+	}
+
+	#design-careers-roles .ibm-columns {
+		position: relative;
+		height: 628px;
+		overflow: hidden;
+		margin-left: 20px;
+	}
+
+	#design-careers-roles .ibm-ribbon-nav {
+		width: 100%;
+		height: 88px;
+		padding-top: 25px;
+	}
+
+	@media only screen and (min-width: 0) and (max-width: 568px) {
+		#design-careers-roles .ibm-ribbon-nav {
+			height: 44px;
+		}
+	}
+
+	#design-careers-roles .ibm-ribbon-nav a {
+		position: relative;
+		width: 25%;
+		height: 100%;
+		background: none;
+		font-size: inherit;
+		text-indent: inherit;
+		@include design-apply-color(#888888);
+		margin: 0;
+		@include design-apply-font-bold();
+		overflow: visible;
+		vertical-align: top;
+	}
+
+	.design-careers-roles-tabpointer {
+		position: absolute;
+		top: -48px;
+		left: 50%;
+		margin-left: -24px;
+		border-left: 24px solid transparent;
+		border-right: 24px solid transparent;
+		border-bottom: 24px solid #fff;
+		display: none;
+	}
+
+	.design-ribbon-ready .ibm-ribbon-nav a.ibm-active .design-careers-roles-tabpointer {
+		display: block;
+	}
+
+	#design-careers-roles .ibm-ribbon-nav a .design-careers-roles-tabicon {
+		height: 40px;
+		pointer-events: none;
+		margin-bottom: 9px;
+	}
+
+	#design-careers-roles .ibm-ribbon-nav a svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	#design-careers-roles .ibm-ribbon-nav a svg * {
+		fill: #888888;
+	}
+
+	#design-careers-roles .ibm-ribbon-nav a.ibm-active {
+		@include design-apply-color(#00a59f);
+	}
+
+	#design-careers-roles .ibm-ribbon-nav a.ibm-active svg * {
+		fill: #00a59f;
+	}
+
+	@media only screen and (min-width: 0) and (max-width: 568px) {
+		.design-careers-role-tabtext {
+			display: none;
+		}
+	}
+
+	.design-careers-tab-content {
+		display: none;
+	}
+
+	#design-careers-roles .ibm-columns .ibm-col-4-2.photo {
+		height: 100%;
+		position: relative;
+	}
+
+	#design-careers-roles .ibm-columns .ibm-col-4-2.photo img {
+		position: absolute;
+	}
+
+	#design-careers-roles .ibm-columns:nth-of-type(1) .ibm-col-4-2.photo img {
+		bottom: 0;
+		left: 0;
+		width: 475px;
+	}
+
+	#design-careers-roles .ibm-columns:nth-of-type(2) .ibm-col-4-2.photo img {
+		bottom: 0;
+		left: 0;
+		width: 475px;
+	}
+
+	#design-careers-roles .ibm-columns:nth-of-type(3) .ibm-col-4-2.photo img {
+		bottom: 0;
+		left: 0;
+		width: 475px;
+	}
+
+	#design-careers-roles .ibm-columns:nth-of-type(4) .ibm-col-4-2.photo img {
+		bottom: 0;
+		left: 0;
+		width: 475px;
+	}
+
+	@media only screen and (min-width: 0) and (max-width: 568px) {
+		#design-careers-roles-colourband {
+			height: 545px;
+		}
+
+		#design-careers-roles .ibm-columns {
+			height: 520px;
+		}
+
+		#design-careers-roles .ibm-columns .ibm-col-4-2.photo {
+			position: absolute;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(1) .ibm-col-4-2.photo img {
+			width: 150%;
+			top: 246px;
+			left: -25%;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(2) .ibm-col-4-2.photo img {
+			top: 256px;
+			left: -29%;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(3) .ibm-col-4-2.photo img {
+			width: 125%;
+			top: 294px;
+			left: -16%;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(4) .ibm-col-4-2.photo img {
+			width: 112%;
+			top: 260px;
+			left: -8%;
+		}
+	}
+
+	@media only screen and (min-width: 569px) and (max-width: 640px) {
+		#design-careers-roles .ibm-columns:nth-of-type(1) .ibm-col-4-2.photo img {
+			left: -80px;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(2) .ibm-col-4-2.photo img {
+			left: -120px;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(3) .ibm-col-4-2.photo img {
+			left: -70px;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(4) .ibm-col-4-2.photo img {
+			left: -120px;
+		}
+	}
+
+	@media only screen and (min-width: 641px) and (max-width: 800px) {
+		#design-careers-roles .ibm-columns:nth-of-type(1) .ibm-col-4-2.photo img {
+			left: -90px;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(2) .ibm-col-4-2.photo img {
+			left: -90px;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(3) .ibm-col-4-2.photo img {
+			width: 420px;
+			left: -60px;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(4) .ibm-col-4-2.photo img {
+			left: -62px;
+		}
+	}
+
+	#design-careers-roles .ibm-columns .ibm-col-4-2.text {
+		text-align: left;
+		padding-top: 156px;
+		box-sizing: border-box;
+		padding-left: 15px;
+		@include design-apply-color(#666);
+	}
+
+	#design-careers-roles .ibm-columns .ibm-col-4-2:nth-of-type(2).text {
+		text-align: right;
+	}
+
+	#design-careers-roles .ibm-columns .ibm-col-4-2.text h2 {
+		@include design-apply-color(#00a59f);
+		font-size: 28px;
+		line-height: 28px;
+	}
+
+	#design-careers-roles .ibm-columns .ibm-col-4-2.text p {
+		@include design-apply-font-regular();
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+	#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pull-quote,
+	#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pull-quote p {
+		@include design-apply-font-bold();
+		@include design-apply-font-size(34px, 38px);
+		margin-top: 18px;
+		margin-bottom: 26px;
+		@include design-apply-color(#444c55);
+	}
+
+	#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pullquote-open,
+	#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pullquote-close {
+		@include design-apply-font-bold();
+		@include design-apply-font-size(34px, 30px);
+		@include design-apply-color(#00a59f);
+	}
+
+	#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pullquote-open {
+		margin-left: -22px;
+	}
+
+	div.ibm-design-careers-quote-credit {
+		@include design-apply-font-bold();
+		@include design-apply-font-size(16px);
+		@include design-apply-color(#00A59F);
+		padding-top: 12px;
+	}
+
+	@media only screen and (min-width: 0) and (max-width: 568px) {
+		#design-careers-roles .ibm-columns .ibm-col-4-2.text {
+			text-align: left;
+			padding-top: 10px;
+		}
+
+		#design-careers-roles .ibm-columns .ibm-col-4-2:nth-of-type(2).text {
+			text-align: left;
+		}
+
+		#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pull-quote,
+		#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pull-quote p {
+			@include design-apply-font-size(16px, 20px);
+			margin-top: 4px;
+			margin-bottom: 8px;
+		}
+
+		#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pullquote-open {
+			margin: 0 2px 0 0;
+			position: static;
+		}
+
+		#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pullquote-open,
+		#design-careers-roles .ibm-columns .ibm-col-4-2.text .ibm-pullquote-close {
+			@include design-apply-font-size(16px, 12px);
+		}
+
+		div.ibm-design-careers-quote-credit {
+			@include design-apply-font-size(12px);
+			padding-top: 4px;
+		}
+	}
+
+	@media only screen and (min-width: 569px) and (max-width: 640px) {
+		#design-careers-roles .ibm-columns .ibm-col-4-2.text {
+			padding-top: 75px;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(3) .ibm-col-4-2.text,
+		#design-careers-roles .ibm-columns:nth-of-type(4) .ibm-col-4-2.text {
+			padding-top: 40px;
+		}
+
+		#design-careers-roles .ibm-columns:nth-of-type(4) .ibm-col-4-2.text blockquote {
+			font-size: 32px;
+			line-height: 34px;
+		}
+	}
+
+	@media only screen and (min-width: 641px) and (max-width: 800px) {
+		#design-careers-roles .ibm-columns .ibm-col-4-2.text {
+			padding-top: 100px;
+		}
+	}
+
+	/******************************************************************************/
+	/* 'Apply yourself' form band.                                                */
+	/******************************************************************************/
+
+	.design-careers-error-line {
+		@include design-apply-color-light-on-dark($error-red);
+		@include design-apply-font-regular();
+		display: none;
+	}
+
+
+	#L04, #L08 { /* extra padding above parts of the form */
+		padding: 20px 0px 0px 0px;
+	}
+
+	.design-careers-nowrap {
+		white-space: nowrap;
+	}
+
+	#design-careers-apply-yourself #design-careers-specialty .design-careers-checkbox + label{
+		border: 0px solid $light-red;
+	}
+	#design-careers-apply-yourself #design-careers-specialty .design-careers-button-selected {
+		display: none;
+	}
+
+	#design-careers-not-austin {
+		border: 0px solid $light-red;
+	}
+
+	#design-careers-form-errors {
+		margin: 10px 0px 0px 0px;
+		@include design-apply-color-light-on-dark($error-red);
+		@include design-apply-font-regular();
+	}
+
+	#design-careers-apply-yourself hr { /* custom 2px blue hr line */
+		border-color: $focus-blue;
+		border-style: solid;
+		border-width: 2px 0 0;
+		clear: both;
+		margin: 20px 0 0 0;
+		height: 0;
+	}
+
+	#design-careers-apply-yourself .design-careers-text-giant {
+		@include design-apply-font-bold();
+		@include design-apply-font-size(40px, 48px);
+	}
+
+	#design-careers-apply-yourself .design-careers-text-large,
+	#design-careers-apply-yourself .design-careers-text-large > span {
+				@include design-apply-font-bold();
+		@include design-apply-font-size(20px);
+	}
+
+	#design-careers-apply-yourself .design-careers-text-medium,
+	#design-careers-apply-yourself .design-careers-text-medium > span {
+		@include design-apply-font-regular();
+		@include design-apply-font-size(16px, 20px);
+		.dj_ie7 & {
+			overflow: auto;
+		}
+	}
+
+	#design-careers-apply-yourself .design-careers-text-small {
+		@include design-apply-font-regular();
+		@include design-apply-font-size(14px, 20px);
+		@include design-apply-color-light-on-dark($dark-gray);
+	}
+
+	.design-careers-vertical-middle {
+		padding: 30px 0px 30px 0px;
+
+	}
+
+	#design-careers-apply-yourself {
+		background-color: $almost-black;
+		@include design-apply-color-light-on-dark(#fff);
+	}
+
+	#design-careers-apply-yourself p {
+		@include design-apply-color-light-on-dark(#fff);
+	}
+
+
+	#design-careers-col-left {
+		@include design-inline-block();
+		vertical-align: top;
+	}
+
+	#design-careers-col-middle {
+		@include design-inline-block();
+		vertical-align: top;
+	}
+
+	#design-careers-col-right {
+		@include design-inline-block();
+		vertical-align: top;
+	}
+
+	#design-careers-apply-yourself .ibm-columns .design-careers-col-pad-5,
+	#design-careers-apply-yourself .ibm-columns .ibm-col-5-2.design-careers-col-pad-5-if-5-2 {
+		// padding-left (940-748)/2
+		padding-left: 96px;
+
+		@media only screen and (min-width: 641px) and (max-width: 800px) {
+			// padding-left (640-508)/2
+			padding-left: 66px;
+		}
+		@media only screen and (min-width: 569px) and (max-width: 640px) {
+			// padding-left (520-412)/2
+			padding-left: 54px;
+		}
+		@media only screen and (min-width: 0) and (max-width: 568px) {
+			// No padding all cols 280 with 10 left right padding.
+			padding-left: 0px;
+		}
+	}
+
+	#design-careers-or {
+		text-align: center;
+		width: 80px;
+		min-width: 80px;
+		margin-top: 10px;
+		padding-top: 43px;
+
+		@media only screen and (min-width: 0) and (max-width: 800px) {
+			width: 36px;
+			min-width: 36px;
+			padding-top: 33px;
+		}
+		@media only screen and (min-width: 569px) and (max-width: 640px) {
+			width: 36px;
+			min-width: 36px;
+			padding-top: 20px;
+		}
+		@media only screen and (min-width: 0) and (max-width: 568px) {
+			width: 36px;
+			min-width: 36px;
+			margin-top: 0px;
+			padding-top: 20px;
+		}
+	}
+
+	#design-careers-fulltime-internship-desktop button {
+		background-color: $almost-black;
+	}
+	#design-careers-fulltime-internship-desktop button:focus,
+	#design-careers-fulltime-internship-desktop button:active,
+	#design-careers-fulltime-internship-desktop button:hover {
+		border: $border-selected;
+	}
+	#design-careers-fulltime-internship-desktop button.design-careers-selected	 {
+		background-color: $focus-blue;
+		border: $border-selected;
+	}
+	#design-careers-fulltime-internship-desktop button.design-careers-selected:focus	 {
+		border: $border-selected-focus;
+	}
+	#design-careers-fulltime-internship-desktop button.design-careers-selected:hover,
+	#design-careers-fulltime-internship-desktop button.design-careers-selected:active	 {
+		background-color: $mid-blue;
+		border: $border-selected-focus;
+	}
+
+	#design-careers-not-austin {
+		display: none;
+	}
+	#design-careers-not-austin.design-careers-not-intern {
+		display: inline;
+	}
+
+
+	#design-careers-fulltime, #design-careers-internship {
+		padding: 20px 40px 20px 40px;
+		margin: 10px 0px 0px 0px;
+		border: $border-nofocus;
+		cursor: pointer;
+		@include design-apply-color-light-on-dark(#fff);
+		text-align:left;
+		// Widths half of ibm-col-5-4 - design-careers-or (748-80)/2
+		width: 332px;
+		min-width: 332px;
+		@include design-inline-block();
+
+		@media only screen and (min-width: 641px) and (max-width: 800px) {
+			padding: 10px;
+			// Widths half of ibm-col-5-4 - design-careers-or (508-40)/2
+			width: 236px;
+			min-width: 236px;
+		}
+
+		@media only screen and (min-width: 569px) and (max-width: 640px) {
+			padding: 10px 10px 6px;
+			// Widths half of ibm-col-5-4 - design-careers-or (412-50)/2
+			width: 183px;
+			min-width: 183px;
+		}
+
+		@media only screen and (min-width: 0) and (max-width: 568px) {
+			padding: 8px 5px 5px;
+			// Widths half of ibm-col-5-4 - design-careers-or (280-40)/2
+			width: 122px;
+			min-width: 122px;
+			text-align: center;
+		}
+	}
+
+	@media only screen and (min-width: 0) and (max-width: 640px) {
+
+		#design-careers-fulltime-text {
+			display: none;
+		}
+
+		#design-careers-internship-text {
+			display: none;
+		}
+
+	}
+
+	#design-careers-apply-yourself #design-discipline-mobile-select {
+		width: 280px; // sets withd of jquery select
+	}
+	#design-careers-apply-yourself #design-discipline-mobile-select-container {
+		max-height: 68px; // Allows expansion of menu without pushing later content down.
+	}
+	#design-careers-apply-yourself #design-discipline-mobile-select-button {
+		background: $almost-black;
+		text-align: center;
+		height: 42px;
+		padding-top: 8px;
+		border: 2px solid $dark-gray;
+		cursor: pointer;
+		margin: 10px 0px 0px 0px;
+		border-radius: 0px;
+		@include design-apply-font-regular();
+		@include design-apply-color-light-on-dark(#fff);
+		@include design-apply-font-size(16px);
+	}
+	#design-careers-apply-yourself #design-discipline-mobile-select-button:focus,
+	#design-careers-apply-yourself #design-discipline-mobile-select-button:hover,
+	#design-careers-apply-yourself #design-discipline-mobile-select-button:active {
+		border: 2px solid $focus-blue;
+	}
+	#design-careers-apply-yourself #design-discipline-mobile-select-button .ui-icon {
+		background-image: none;
+	}
+	#design-careers-apply-yourself #design-discipline-mobile-select-button .ui-selectmenu-text {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		cursor: default;
+	}
+	#design-careers-apply-yourself #design-discipline-mobile-select-button .ui-selectmenu-text:after {
+		content: "\00a0\f14b\00a0";
+		font-family: 'iconsIBM';
+		font-variant: normal;
+		@include design-apply-color-light-on-dark(#fff);
+		position: absolute;
+		@include design-inline-block();
+		right: 15px;
+	}
+	#design-careers-apply-yourself #design-discipline-mobile-select-button[aria-expanded=true],
+	#design-careers-apply-yourself #design-discipline-mobile-select-button[aria-expanded=true]:focus {
+		border-bottom: 0px solid transparent;
+		height: 44px;
+	}
+	#design-discipline-mobile-select-container .ui-selectmenu-menu {
+		position: relative;
+	}
+
+	#design-discipline-mobile-select-menu {
+		@include design-apply-font-regular();
+		@include design-apply-color(#000);
+		max-width: 276px;  // set to 277 normally - 1px too wide
+	}
+	#design-discipline-mobile-select-menu .ui-state-focus {
+		@include design-apply-font-regular();
+		@include design-apply-color-light-on-dark(#fff);
+		background: #1e90ff; // standard select background
+	}
+
+	#design-careers-apply-yourself #design-careers-disciplines button{
+		width: 100%;
+		height: 53px;
+		padding-top: 8px;
+		@media only screen and (min-width: 569px) and (max-width: 800px) {
+			padding-top: 4px;
+		}
+		background-color: $almost-black;
+		border: $border-nofocus;
+		cursor: pointer;
+		@include design-apply-color-light-on-dark(#ddd);
+		margin: 10px 0px 0px 0px;
+	}
+
+	#design-careers-apply-yourself #design-careers-disciplines button:hover,
+	#design-careers-apply-yourself #design-careers-disciplines button:active,
+	#design-careers-apply-yourself #design-careers-disciplines button:focus {
+		border: $border-selected;
+	}
+	#design-careers-apply-yourself #design-careers-disciplines button.design-careers-button-selected {
+		background-color: $focus-blue;
+		border: $border-selected;
+	}
+	#design-careers-apply-yourself #design-careers-disciplines button.design-careers-button-selected:focus {
+		border: $border-selected-focus;
+	}
+	#design-careers-apply-yourself #design-careers-disciplines button.design-careers-button-selected:hover,
+	#design-careers-apply-yourself #design-careers-disciplines button.design-careers-button-selected:active {
+		background-color: $mid-blue;
+		border: $border-selected-focus;
+	}
+
+	#design-careers-apply-yourself h2 {
+		margin: 15px 0px 0px 0px;
+	}
+
+	#design-careers-apply-yourself .design-careers-initially-hidden-label {
+		visibility: hidden;
+		@include design-apply-font-bold();
+		font-size: 14px;
+		display: block;
+		margin: 15px 0px 0px 0px;
+		.dj_ie7 &,
+		.dj_ie8 &,
+		.dj_ie9 & {
+			visibility: visible;
+	}
+	}
+	#design-careers-apply-yourself.design-careers-show-errors .design-careers-initially-hidden-label {
+		visibility: visible;
+		@include design-apply-color-light-on-dark($dark-gray);
+	}
+	#design-careers-apply-yourself.design-careers-show-errors .design-careers-initially-hidden-label.design-careers-input-error:not(.design-careers-edit-select) {
+		visibility: visible;
+		@include design-apply-color-light-on-dark($error-red);
+	}
+	#design-careers-apply-yourself.design-careers-show-errors .design-careers-initially-hidden-label.design-careers-input-error:not(.design-careers-edit-select) + input,
+	#design-careers-apply-yourself.design-careers-show-errors .design-careers-initially-hidden-label.design-careers-input-error + input + input { // in some cases there are two inputs
+		border-bottom: 1px solid $error-red;
+	}
+	#design-careers-apply-yourself.design-careers-show-errors .design-careers-initially-hidden-label + input + .design-careers-error-line {
+		@include design-inline-block();
+	}
+	#design-careers-apply-yourself .design-careers-initially-hidden-label.design-careers-edit-select {
+		visibility: visible;
+		position: relative;
+		top: 20px;
+		font-size: 15px;
+		@include design-apply-color-light-on-dark($dark-gray);
+	}
+	#design-careers-apply-yourself .design-careers-initially-hidden-label.design-careers-edit-not-empty {
+		visibility: visible;
+		@include design-apply-color-light-on-dark($dark-gray);
+		top: 0px;
+	}
+	#design-careers-apply-yourself .design-careers-initially-hidden-label.design-careers-label-animate {
+		@include design-apply-color-light-on-dark($focus-blue);
+		fontSize: 14px;
+	}
+
+	#design-careers-apply-yourself input[type=text] {
+		border: 0px solid #f00;
+		border-bottom: 1px solid $other-gray;
+		box-sizing: border-box;
+		border-radius: 0px;
+	}
+	#design-careers-apply-yourself textarea {
+		border: 1px solid $other-gray;
+		resize: vertical;
+		height: 100px;
+		padding: 4px;
+		box-sizing: border-box;
+	}
+	#design-careers-apply-yourself input[type=text],
+	#design-careers-apply-yourself textarea {
+		background-color: $almost-black;
+		@include design-apply-color-light-on-dark(#fff);
+		font-size: 16px;
+		width: 100%;
+		@include design-apply-font-regular();
+	}
+	#design-careers-apply-yourself input[type=text]:focus {
+		border-bottom: $border-text-focus;
+	}
+	#design-careers-apply-yourself textarea:focus {
+		border: $border-text-focus;
+	}
+
+	#design-careers-apply-yourself button[type=submit] {
+		width: 160px;
+		border: 2px solid $focus-blue;
+		background-color: $focus-blue;
+		@include design-apply-font-bold();
+		font-size: 16px;
+		@include design-apply-color-light-on-dark(#fff);
+		padding: 15px;
+		margin: 15px 0px 0px 0px;
+		cursor: pointer;
+	}
+
+	#design-careers-apply-yourself button[type=submit]:focus {
+		border: 2px solid $mid-blue;
+	}
+
+	#design-careers-apply-yourself button[type=submit]:blur {
+		border: 2px solid $focus-blue;
+	}
+
+	#design-careers-apply-yourself button[type=submit]:hover,
+	#design-careers-apply-yourself button[type=submit]:active {
+		background: $mid-blue;
+		border: 2px solid $mid-blue;
+	}
+
+	/******************************************************************************/
+	/* Custom checkbox                                                            */
+	/******************************************************************************/
+	.design-careers-checkbox {
+		@include design-opacity(0);
+		position: absolute;
+		.dj_ie7 &, .dj_ie8 &{
+			@include design-opacity(1);
+			position: static;
+		}
+	}
+	.design-careers-checkbox + label div {
+		.dj_ie7 &, .dj_ie8 &{
+			display: none;
+		}
+		@include design-apply-font-regular();
+		border: 1px solid $dark-gray;
+		border-radius: 0px; //3px;
+		margin: 5px 10px 8px 5px;
+		color: transparent;
+		width: 20px;
+		height: 20px;
+		box-sizing: border-box;
+		@include design-inline-block();
+		@include design-apply-font-size(14px);
+	}
+	.design-careers-checkbox:checked + label div {
+		@include design-apply-color-light-on-dark(#fff);
+	}
+
+	.design-careers-checkbox + label {
+		text-align: center; // for div
+		@include design-apply-font-regular();
+		cursor:pointer;
+	}
+
+	.design-careers-checkbox:focus + label div,
+	.design-careers-checkbox:hover + label div,
+	.design-careers-checkbox:active + label	div {
+		//outline: 2px solid $focus-blue;
+		border: 1px solid $focus-blue;
+	}
+	.design-careers-checkbox:focus + label,
+	.design-careers-checkbox:hover + label,
+	.design-careers-checkbox:hover + label {
+		@include design-apply-color-light-on-dark($focus-blue);
+	}
+
+	/******************************************************************************/
+	/* Apply-OK thank you page                                                    */
+	/******************************************************************************/
+	#design-careers-confirm-container {
+		padding: 100px 0;
+	}
+
+	#design-careers-bee-image {
+		margin: auto;
+		display: block;
+	}
+	#design-careers-bee-in-touch {
+		margin: 38px 0 6px 0;
+	}
+}
+
+// dynamically added UI outside of ibm content
+ul.ui-widget-content#design-discipline-mobile-select-menu {
+	border: 2px solid $dark-gray;
+	border-top: none;
+	background: none;
+	background-color: $almost-black;
+}
+ul.ui-widget-content#design-discipline-mobile-select-menu.ui-button-hasfocus {
+	border: 2px solid $focus-blue;
+	border-top: none;
+}
+ul.ui-widget-content#design-discipline-mobile-select-menu li {
+	background: none;
+	background-color: $almost-black;
+	height: 42px;
+	padding: 16px 0px 0px 16px;
+	border-radius: 0px;
+	border: none;
+	@include design-apply-font-regular();
+	@include design-apply-color-light-on-dark(#fff);
+	@include design-apply-font-size(16px);
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+}
+
+ul.ui-widget-content#design-discipline-mobile-select-menu li.ui-current-selection {
+	display: none;
+}
+#ibm-com.design-page-careers #ibm-content #ibm-content-main #design-discipline-mobile-select-menu li.ui-state-focus,
+#ibm-com.design-page-careers #ibm-content #ibm-content-main #design-discipline-mobile-select-menu li:focus,
+#ibm-com.design-page-careers #ibm-content #ibm-content-main #design-discipline-mobile-select-menu li:active,
+#ibm-com.design-page-careers #ibm-content #ibm-content-main #design-discipline-mobile-select-menu li:hover {
+	background-color: #3c5c6c;
+	margin: 0px;
+}
+ul.ui-widget-content#design-discipline-mobile-select-menu li:before {
+	display: none;
+}
