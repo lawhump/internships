@@ -20,7 +20,7 @@
 
 @include mui-series {
   .equinox {
-    @include mui-queue(.3s, 0s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.2s, 0s, slide($direction: up, $amount: 15%), fade);
   }
 
   .solstice {
@@ -28,7 +28,7 @@
   }
 
   .swelter {
-    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.3s, .1s, slide($direction: up, $amount: 15%), fade);
   }
 }
 
@@ -40,21 +40,18 @@ section {
   }
 }
 
+
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
-  border-bottom: 1px solid $medium-gray;
+  border-bottom: 0px solid $medium-gray;
+}
+
+input:focus {
+  border-bottom: 0px solid $medium-gray !important;
 }
 
 /* Helpers */
 .twentytwenty-overlay {
   display: none;
-}
-
-.twentytwenty-handle {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-
-  // background-color: skyblue;
 }
 
 .container {
@@ -82,11 +79,58 @@ body{
   height: calc(100vh - 70px);
   max-height: 1000px;
 
-  img {
+  .title {
+    position: absolute;
+    top: calc((100% - 70px)/2);
+    left: 50%;
+    width: 100%;
+    max-width: 800px;
+
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+
+    z-index: 30;
+
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    h3 {
+      text-align: center;
+      color: #fff;
+    }
+  }
+}
+
+#hero-slider {
+  height: calc(100vh - 70px) !important;
+  width: 100%;
+
+  img, video {
     height: 100%;
     width: 100%;
     object-fit: cover;
   }
+}
+
+.twentytwenty-handle, .twentytwenty-handle::before, .twentytwenty-handle::after {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}
+
+.twentytwenty-handle {
+  top: calc(50% + 140px);
+  z-index: 50;
+  background-color: #8cd211;
+}
+
+.twentytwenty-container {
+  z-index: initial;
 }
 
 .nav {

@@ -1,3 +1,17 @@
+function checkNav() {
+  var hero_height = $('#hero').height();
+  var $el = $('.nav');
+  var isPositionFixed = ($el.css('position') == 'fixed');
+  if ($(this).scrollTop() > hero_height && !isPositionFixed){
+    $('.nav').css({'position': 'fixed', 'top': '0px'});
+    document.querySelector('.about').style.paddingTop = $el.height()+'px';
+  }
+  if ($(this).scrollTop() < hero_height && isPositionFixed) {
+    $('.nav').css({'position': 'static', 'top': '0px'});
+    document.querySelector('.about').style.paddingTop = '0';
+  }
+}
+
 var scroll = function() {
   var bottom_of_nav = $('.nav').offset().top + $(this).outerHeight();
   var bottom_of_roles = $('.roles').offset().top + $(this).outerHeight();
@@ -16,18 +30,7 @@ var scroll = function() {
     $('.sessions').addClass('is-animating');
   }
 
-  var hero_height = $('#hero').height();
-  var $el = $('.nav');
-  var isPositionFixed = ($el.css('position') == 'fixed');
-  if ($(this).scrollTop() > hero_height && !isPositionFixed){
-    $('.nav').css({'position': 'fixed', 'top': '0px'});
-    document.querySelector('.about').style.paddingTop = '75px'
-  }
-  if ($(this).scrollTop() < hero_height && isPositionFixed) {
-    $('.nav').css({'position': 'static', 'top': '0px'});
-    document.querySelector('.about').style.paddingTop = '0'
-  }
-
+  checkNav();
 };
 
 $(document).foundation();
@@ -38,9 +41,11 @@ $(document).ready(function() {
 
   scroll();
 
-  $('#hero').twentytwenty({
-  	default_offset_pct: 0
+  $('#hero-slider').twentytwenty({
+  	default_offset_pct: .5
   });
+
+  document.getElementById("hero-vid").play();
 
   var sliderSettings = {
   	item: 4,

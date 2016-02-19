@@ -389,7 +389,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Helvetica Neue for IBM", Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
   line-height: 1.5;
   color: #0a0a0a;
@@ -1218,7 +1218,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Helvetica Neue for IBM", Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   color: inherit;
@@ -4008,8 +4008,8 @@ table.hover tr:nth-of-type(even):hover {
 .equinox {
   -webkit-animation-name: custom-5;
           animation-name: custom-5;
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
   -webkit-animation-delay: 0s;
           animation-delay: 0s; }
 
@@ -4038,8 +4038,8 @@ table.hover tr:nth-of-type(even):hover {
           animation-name: custom-6;
   -webkit-animation-duration: 0.3s;
           animation-duration: 0.3s;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s; }
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
 
 @-webkit-keyframes custom-6 {
   0% {
@@ -4066,8 +4066,8 @@ table.hover tr:nth-of-type(even):hover {
           animation-name: custom-7;
   -webkit-animation-duration: 0.3s;
           animation-duration: 0.3s;
-  -webkit-animation-delay: 0.67s;
-          animation-delay: 0.67s; }
+  -webkit-animation-delay: 0.57s;
+          animation-delay: 0.57s; }
 
 @-webkit-keyframes custom-7 {
   0% {
@@ -4095,16 +4095,14 @@ section {
     border-radius: 50%; }
 
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
-  border-bottom: 1px solid #cacaca; }
+  border-bottom: 0px solid #cacaca; }
+
+input:focus {
+  border-bottom: 0px solid #cacaca !important; }
 
 /* Helpers */
 .twentytwenty-overlay {
   display: none; }
-
-.twentytwenty-handle {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none; }
 
 .container {
   background-color: #ccc;
@@ -4124,10 +4122,49 @@ body {
   width: 100%;
   height: calc(100vh - 70px);
   max-height: 1000px; }
-  #hero img {
+  #hero .title {
+    position: absolute;
+    top: calc((100% - 70px)/2);
+    left: 50%;
+    width: 100%;
+    max-width: 800px;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    z-index: 30;
+    user-drag: none;
+    -webkit-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none; }
+    #hero .title h3 {
+      text-align: center;
+      color: #fff; }
+
+#hero-slider {
+  height: calc(100vh - 70px) !important;
+  width: 100%; }
+  #hero-slider img, #hero-slider video {
     height: 100%;
     width: 100%;
     object-fit: cover; }
+
+.twentytwenty-handle, .twentytwenty-handle::before, .twentytwenty-handle::after {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important; }
+
+.twentytwenty-handle {
+  top: calc(50% + 140px);
+  z-index: 50;
+  background-color: #8cd211; }
+
+.twentytwenty-container {
+  z-index: initial; }
 
 .nav {
   background-color: #fff;
