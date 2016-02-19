@@ -75,6 +75,13 @@ body{
   overflow-x: hidden;
 }
 
+h2,h3,h4{
+  font-weight: 600;
+}
+h5{
+  font-weight: 500;
+}
+
 #hero {
   width: 100%;
   height: calc(100vh - 70px);
@@ -159,6 +166,10 @@ body{
   }
 }
 
+h3{
+  margin: 2rem 0 2rem 0;
+}
+
 .selling-points {
   background-color: #F7F8F9;
   h3 {
@@ -166,6 +177,7 @@ body{
   }
   img{
     padding-top: 5rem;
+    width: rem-calc(250);
   }
 }
 nav {
@@ -390,10 +402,14 @@ section.round-image img{
   padding-bottom: 6rem;
 }
 
+.flex-video {
+  margin-top: 4rem;
+}
+
 #band{
   padding: 4rem 0;
   background-color:#8cd211;
-  margin-top: 0;
+  margin-top: 6rem;
 
 }
 #band h4{
@@ -432,7 +448,9 @@ section.round-image img{
 }
 
 .apply-btn a.button{
-  background-color: #5AA700;
+  background-color: #8CD211;
+  color: #454D56;
+  font-weight: 600;
 }
 
 .alums {
