@@ -4226,10 +4226,19 @@ nav {
   padding-bottom: 3rem; }
 
 .form {
-  background-color: #323232;
+  background-color: #454D56;
   color: #fefefe;
   margin-top: 0;
   padding: 6rem 0; }
+
+.discipline {
+  margin-top: 3rem; }
+
+.role-names {
+  transition: opacity 1s ease; }
+
+.active-role {
+  border: 3px solid #00B4A0; }
 
 .footer {
   color: #323232;
@@ -4364,6 +4373,9 @@ section.round-image img {
 
 .the-form {
   padding: 20rem 0; }
+
+.apply-btn a.button {
+  background-color: #5AA700; }
 
 .alums .slider {
   margin: 0;

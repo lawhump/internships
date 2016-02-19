@@ -94,3 +94,9 @@ $(document).ready(function() {
 });
 
 $(window).scroll(scroll);
+
+// clickable roles buttons in the form
+
+$('.role-names').click(function(){
+    $(this).toggleClass('active-role');
+});

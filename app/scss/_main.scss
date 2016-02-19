@@ -202,12 +202,21 @@ nav {
 }
 
 .form {
-  background-color: $dark-gray;
+  background-color: #454D56;
   color: $white;
   margin-top: 0;
   padding: 6rem 0;
 }
+.discipline {
+  margin-top: 3rem;
+}
 
+.role-names {
+  transition: opacity 1s ease;
+}
+.active-role {
+  border: 3px solid #00B4A0;
+}
 .footer {
   color: $dark-gray;
   background-color: $light-gray;
@@ -398,6 +407,10 @@ section.round-image img{
 
 .the-form {
   padding: 20rem 0;
+}
+
+.apply-btn a.button{
+  background-color: #5AA700;
 }
 
 .alums {
