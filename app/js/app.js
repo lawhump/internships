@@ -21,7 +21,7 @@ var scroll = function() {
   var isPositionFixed = ($el.css('position') == 'fixed');
   if ($(this).scrollTop() > hero_height && !isPositionFixed){
     $('.nav').css({'position': 'fixed', 'top': '0px'});
-    document.querySelector('.about').style.paddingTop = '75px'
+    document.querySelector('.about').style.paddingTop = '65px'
   }
   if ($(this).scrollTop() < hero_height && isPositionFixed) {
     $('.nav').css({'position': 'static', 'top': '0px'});
