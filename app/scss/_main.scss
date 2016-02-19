@@ -171,6 +171,31 @@ body{
 nav {
   background: none;
   border-bottom: 1px solid #DFE9E9;
+
+  .top-bar-left {
+    a {
+      padding: 0;
+      display: inline;
+    }
+  }
+
+  .top-bar-right {
+    a {
+      padding: 0.7rem 0 0.1rem;
+      margin: 0 1rem;
+    }
+  }
+
+  a {
+    width: auto;
+    color: $black;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+      color: $black;
+      border-bottom: 2px solid $black;
+    }
+  }
 }
 .top-bar-left, .top-bar-right {
   width: auto !important;

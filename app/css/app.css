@@ -4197,6 +4197,19 @@ body {
 nav {
   background: none;
   border-bottom: 1px solid #DFE9E9; }
+  nav .top-bar-left a {
+    padding: 0;
+    display: inline; }
+  nav .top-bar-right a {
+    padding: 0.7rem 0 0.1rem;
+    margin: 0 1rem; }
+  nav a {
+    width: auto;
+    color: #0a0a0a;
+    border-bottom: 2px solid transparent; }
+    nav a:hover {
+      color: #0a0a0a;
+      border-bottom: 2px solid #0a0a0a; }
 
 .top-bar-left, .top-bar-right {
   width: auto !important; }
