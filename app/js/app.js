@@ -99,6 +99,12 @@ $(document).ready(function() {
   };
 
   $('.shuffle').on('click', shuffle);
+
+
+  var lnoSound = new Audio("etc/sound/lno.mp3");
+  $('.lno').click(function() {
+    lnoSound.play();
+  });
 });
 
 $(window).scroll(scroll);
