@@ -5,12 +5,12 @@
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
-.research, .ui, .ux, .fed, .equinox, .solstice, .swelter {
+.research, .ui, .ux, .fed, .equinox, .solstice, .swelter, .location {
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both; }
-  .is-animating .research, .is-animating .ui, .is-animating .ux, .is-animating .fed, .is-animating .equinox, .is-animating .solstice, .is-animating .swelter {
+  .is-animating .research, .is-animating .ui, .is-animating .ux, .is-animating .fed, .is-animating .equinox, .is-animating .solstice, .is-animating .swelter, .is-animating .location {
     -webkit-animation-play-state: running;
             animation-play-state: running; }
 
@@ -4089,6 +4089,26 @@ table.hover tr:nth-of-type(even):hover {
             transform: translateY(0);
     opacity: 1; } }
 
+.location {
+  -webkit-animation-name: fade-0-to-1;
+          animation-name: fade-0-to-1;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s; }
+
+@-webkit-keyframes fade-0-to-1 {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fade-0-to-1 {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
 section {
   margin-top: 4rem; }
   section.round-image img {
@@ -4250,11 +4270,15 @@ nav {
   color: #4B8400;
   border-bottom: 2px solid #4B8400; }
 
-#about h2 {
+#overview h3 {
   color: #5AA700; }
 
 #eq h3 {
   color: #00B4A0; }
+
+p.fun-fact {
+  color: #5AA700;
+  font-weight: bold; }
 
 .relationship h3 {
   color: #018571; }
@@ -4262,7 +4286,10 @@ nav {
 .dowork h3 {
   color: #006C5D; }
 
-.video-intro {
+.dowork img {
+  margin-top: 0; }
+
+#video-intro h3 {
   color: #006C5D; }
 
 .overview h3 {
@@ -4386,9 +4413,10 @@ h5.swe {
   color: #8C7300; }
 
 .city-skyline {
-  margin-top: 1.5rem; }
+  margin-top: 1.5rem;
+  transition: height .3s ease-in-out; }
 
-.city-skyline .location {
+.location {
   margin-right: .5rem;
   width: 2.25rem; }
 

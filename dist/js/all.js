@@ -1,3 +1,5 @@
+var gif_loaded = false;
+
 function checkNav() {
   var hero_height = $('#hero').height();
   var $el = $('.nav');
@@ -15,17 +17,26 @@ function checkNav() {
 var scroll = function() {
   var top_of_roles = $('.roles').offset().top;
   var top_of_sessions = $('.sessions').offset().top;
+  var top_of_austin = $('.city-skyline img').offset().top;
   var bottom_of_window = $(window).scrollTop() + $(window).height();
 
   var margin = 170;
   // Hard coded. I know there's a more elegant way but we only have two days
+  if (bottom_of_window > (top_of_sessions+margin)) {
+    $('.sessions').addClass('is-animating');
+  }
+
+  if (bottom_of_window > (top_of_austin+270) && !gif_loaded) {
+    $('.city-skyline').addClass('is-animating');
+    $('.city-skyline img').attr("src","etc/icons/austin.gif");
+    $('.city-skyline img').attr("alt","austin, Texas");
+    gif_loaded = true;
+  }
+
   if (bottom_of_window > (top_of_roles+margin)) {
     $('.roles').addClass('is-animating');
   }
 
-  if (bottom_of_window > (top_of_sessions+margin)) {
-    $('.sessions').addClass('is-animating');
-  }
 
   checkNav();
 };
@@ -98,6 +109,7 @@ $(window).scroll(scroll);
 $('.role-names').click(function(){
     $(this).toggleClass('active-role');
   });
+
 
 $('a[href*="#"]:not([href="#"])').click(function() {
   if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {

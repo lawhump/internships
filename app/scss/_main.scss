@@ -32,6 +32,12 @@
   }
 }
 
+@include mui-series {
+  .location {
+    @include mui-queue(.2s, 0s, fade);
+  }
+}
+
 section {
   margin-top: 4rem;
 
@@ -238,11 +244,15 @@ nav {
   color: #4B8400;
   border-bottom: 2px solid #4B8400;
 }
-#about h2{
+#overview h3{
   color: #5AA700;
 }
 #eq h3{
   color: #00B4A0;
+}
+p.fun-fact{
+  color: #5AA700;
+  font-weight: bold;
 }
 .relationship h3{
   color: #018571;
@@ -250,8 +260,11 @@ nav {
 .dowork h3{
   color: #006C5D;
 }
+.dowork img{
+  margin-top: 0;
+}
 
-.video-intro {
+#video-intro h3{
   color: #006C5D;
 }
 .overview h3{
@@ -274,6 +287,8 @@ nav {
   margin-top: 0;
   padding: 6rem 0;
 }
+
+
 .discipline {
   margin-top: 3rem;
 }
@@ -429,8 +444,10 @@ h5.swe{
 }
 .city-skyline {
   margin-top:1.5rem;
+  transition: height .3s ease-in-out;
 }
-.city-skyline .location{
+
+.location{
   margin-right:.5rem;
   width: rem-calc(36);
 }
