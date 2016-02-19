@@ -108,7 +108,7 @@ $(window).scroll(scroll);
 
 $('.role-names').click(function(){
     $(this).toggleClass('active-role');
-  });
+});
 
 
 $('a[href*="#"]:not([href="#"])').click(function() {
@@ -123,3 +123,9 @@ $('a[href*="#"]:not([href="#"])').click(function() {
     }
   }
 });
+
+$('#apply-btn').click(function(){
+    $('#sucess-msg').removeClass('hide');
+  });
+
+

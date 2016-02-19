@@ -4305,6 +4305,9 @@ p.fun-fact {
 .alums {
   color: #022B22; }
 
+.alums h3 {
+  margin-bottom: 0; }
+
 #work {
   background-color: #f1f3f4;
   padding-bottom: 3rem; }
@@ -4527,6 +4530,9 @@ section.round-image img {
 
 button.shuffle {
   margin-top: 2rem; }
+
+.alums button.shuffle {
+  margin-top: 0; }
 
 /* End Interior styles */
 /* media queries */
