@@ -1595,7 +1595,7 @@ textarea {
   font-size: 1rem;
   color: #0a0a0a;
   background-color: #454D56;
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  box-shadow: inset 0 0px 0px rgba(10, 10, 10, 0.1);
   border-radius: 0;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
   -webkit-appearance: none;
@@ -4008,8 +4008,8 @@ table.hover tr:nth-of-type(even):hover {
 .equinox {
   -webkit-animation-name: custom-5;
           animation-name: custom-5;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
+  -webkit-animation-duration: 0.25s;
+          animation-duration: 0.25s;
   -webkit-animation-delay: 0s;
           animation-delay: 0s; }
 
@@ -4036,10 +4036,10 @@ table.hover tr:nth-of-type(even):hover {
 .solstice {
   -webkit-animation-name: custom-6;
           animation-name: custom-6;
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s; }
+  -webkit-animation-duration: 0.25s;
+          animation-duration: 0.25s;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s; }
 
 @-webkit-keyframes custom-6 {
   0% {
@@ -4064,8 +4064,8 @@ table.hover tr:nth-of-type(even):hover {
 .swelter {
   -webkit-animation-name: custom-7;
           animation-name: custom-7;
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
+  -webkit-animation-duration: 0.25s;
+          animation-duration: 0.25s;
   -webkit-animation-delay: 0.57s;
           animation-delay: 0.57s; }
 
@@ -4094,11 +4094,17 @@ section {
   section.round-image img {
     border-radius: 50%; }
 
-[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
-  border-bottom: 0px solid #cacaca; }
+[type='text'], [type='password'], [type='date'], [type='datetime'],
+[type='datetime-local'], [type='month'], [type='week'], [type='email'],
+[type='number'], [type='search'], [type='tel'], [type='time'], [type='url'],
+[type='color'], textarea {
+  border-top: 0px solid #cacaca !important;
+  border-left: 0px solid #cacaca !important;
+  border-bottom: 1px solid #cacaca;
+  border-right: 0px solid #cacaca !important; }
 
 input:focus {
-  border-bottom: 0px solid #cacaca !important; }
+  border-bottom: 1px solid #08B49F !important; }
 
 /* Helpers */
 .twentytwenty-overlay {

@@ -20,15 +20,15 @@
 
 @include mui-series {
   .equinox {
-    @include mui-queue(.2s, 0s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.25s, 0s, slide($direction: up, $amount: 15%), fade);
   }
 
   .solstice {
-    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.25s, .07s, slide($direction: up, $amount: 15%), fade);
   }
 
   .swelter {
-    @include mui-queue(.3s, .1s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.25s, .1s, slide($direction: up, $amount: 15%), fade);
   }
 }
 
@@ -41,12 +41,18 @@ section {
 }
 
 
-[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
-  border-bottom: 0px solid $medium-gray;
+[type='text'], [type='password'], [type='date'], [type='datetime'],
+[type='datetime-local'], [type='month'], [type='week'], [type='email'],
+[type='number'], [type='search'], [type='tel'], [type='time'], [type='url'],
+[type='color'], textarea {
+  border-top: 0px solid $medium-gray !important;
+  border-left: 0px solid $medium-gray !important;
+  border-bottom: 1px solid $medium-gray;
+  border-right: 0px solid $medium-gray !important;
 }
 
 input:focus {
-  border-bottom: 0px solid $medium-gray !important;
+  border-bottom: 1px solid #08B49F !important;
 }
 
 /* Helpers */
