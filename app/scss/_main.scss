@@ -20,15 +20,15 @@
 
 @include mui-series {
   .equinox {
-    @include mui-queue(.2s, 0s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.25s, 0s, slide($direction: up, $amount: 15%), fade);
   }
 
   .solstice {
-    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.25s, .07s, slide($direction: up, $amount: 15%), fade);
   }
 
   .swelter {
-    @include mui-queue(.3s, .1s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.25s, .1s, slide($direction: up, $amount: 15%), fade);
   }
 }
 
