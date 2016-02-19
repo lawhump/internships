@@ -320,7 +320,7 @@ nav {
 
 
 .sessions {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   text-align: center;
 
   img {
@@ -328,12 +328,28 @@ nav {
     width: 4rem;
   }
 }
-.city-skyline {
-  margin-top:1rem;
+
+h5.equ{
+  color: #FF7832;
 }
-.city-skyline img{
+
+h5.sol{
+  color: #4178BE;
+}
+h5.swe{
+  color: #8C7300;
+}
+.city-skyline {
+  margin-top:1.5rem;
+}
+.city-skyline .location{
   margin-right:.5rem;
   width: rem-calc(36);
+}
+
+.city-skyline h5{
+  color: #018571;
+
 }
 section.round-image img{
   border-radius: 0;
@@ -351,6 +367,7 @@ section.round-image img{
 }
 #band h4{
   padding-bottom: 2rem;
+  color: #003C32;
 }
 
 .overview{
@@ -363,7 +380,7 @@ section.round-image img{
   margin-top: rem-calc(12);
 }
 .button.hollow{
-  color: #006c5d;
+  color: #003C32;
   border: 2px solid #006c5d;
 }
 
