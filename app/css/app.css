@@ -4309,17 +4309,17 @@ nav {
 .footer .social-links .icon-bg-color {
   fill: #586464; }
 
-.made-by {
+.footer .made-by {
   margin-top: 1rem;
   margin-bottom: 5rem; }
 
-img {
+.footer img {
   position: relative;
   top: -6px;
   width: 24px;
   margin-left: 4px; }
 
-.social-links, .text-links {
+.footer .social-links, .footer .text-links {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -4327,15 +4327,15 @@ img {
       -ms-flex-pack: justify;
           justify-content: space-between; }
 
-.text-links a {
+.footer .text-links a {
   color: #323232; }
-  .text-links a:hover {
+  .footer .text-links a:hover {
     border-bottom: 2px solid #323232; }
 
-.social-links .social-link {
+.footer .social-links .social-link {
   display: inline-block; }
 
-.social-links .accessibility-label {
+.footer .social-links .accessibility-label {
   position: absolute;
   overflow: hidden;
   clip: rect(0 0 0 0);
@@ -4346,14 +4346,14 @@ img {
   border: 0;
   display: none; }
 
-.social-links svg {
+.footer .social-links svg {
   width: 30px;
   height: 30px; }
 
-.social-links .icon-bg-color {
+.footer .social-links .icon-bg-color {
   fill: #323232; }
 
-.social-links .icon-color {
+.footer .social-links .icon-color {
   fill: #fefefe; }
 
 /* End highest level shit */
