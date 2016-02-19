@@ -110,8 +110,9 @@ section {
 }
 
 .overview {
-  background-color: #ddd;
-  padding: 3rem 0;
+  background-color: #f1f3f4;
+  padding: 6rem 0;
+  margin-top: 0;
 }
 
 .form {
@@ -240,12 +241,16 @@ section {
 }
 
 #band{
-  padding: 2rem 0;
+  padding: 4rem 0;
   background-color:#8cd211;
 
 }
 #band h5{
-   margin: 2rem 0;
+  padding-bottom:2rem;
+}
+.button.hollow{
+  color: #006c5d;
+  border: 2px solid #006c5d;
 }
 
 .intro {
