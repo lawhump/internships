@@ -245,11 +245,19 @@ nav {
   color: #4B8400;
   border-bottom: 2px solid #4B8400;
 }
-#about h2{
+#overview h3{
   color: #5AA700;
+}
+#overview h6{
+  font-size: 1.5rem;
+  line-height: 3rem;
 }
 #eq h3{
   color: #00B4A0;
+}
+p.fun-fact{
+  color: #5AA700;
+  font-weight: bold;
 }
 .relationship h3{
   color: #018571;
@@ -267,6 +275,7 @@ nav {
 .overview h3{
   color: #003C32;
 }
+
 .form h3{
   color: #41D6C3;
 }
@@ -284,6 +293,8 @@ nav {
   margin-top: 0;
   padding: 6rem 0;
 }
+
+
 .discipline {
   margin-top: 3rem;
 }
@@ -307,13 +318,13 @@ nav {
   padding: 1rem 0 1rem;
   text-align: center;
 }
-
-.footer-items{
-  font-size: .9rem;
-}
 .footer .social-links .icon-bg-color {
   fill: #586464;
 }
+
+  .social-links .icon-bg-color {
+    fill: #586464;
+  }
   .made-by {
     margin-top: 1rem;
     margin-bottom: 5rem;
@@ -333,6 +344,7 @@ nav {
   .text-links {
     a {
       color: $dark-gray;
+      font-size: .9rem;
 
       &:hover {
         border-bottom: 2px solid $dark-gray;

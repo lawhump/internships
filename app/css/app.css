@@ -4271,11 +4271,19 @@ nav {
   color: #4B8400;
   border-bottom: 2px solid #4B8400; }
 
-#about h2 {
+#overview h3 {
   color: #5AA700; }
+
+#overview h6 {
+  font-size: 1.5rem;
+  line-height: 3rem; }
 
 #eq h3 {
   color: #00B4A0; }
+
+p.fun-fact {
+  color: #5AA700;
+  font-weight: bold; }
 
 .relationship h3 {
   color: #018571; }
@@ -4327,10 +4335,10 @@ nav {
   padding: 1rem 0 1rem;
   text-align: center; }
 
-.footer-items {
-  font-size: .9rem; }
-
 .footer .social-links .icon-bg-color {
+  fill: #586464; }
+
+.social-links .icon-bg-color {
   fill: #586464; }
 
 .made-by {
@@ -4352,7 +4360,8 @@ img {
           justify-content: space-between; }
 
 .text-links a {
-  color: #323232; }
+  color: #323232;
+  font-size: .9rem; }
   .text-links a:hover {
     border-bottom: 2px solid #323232; }
 

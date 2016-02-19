@@ -117,12 +117,13 @@ $('input').on('click', function(e) {
     //   var prev = e.target.previousSibling.previousSibling;
     //   console.log(prev.style.color);
     //   prev.style.color = '#08B49F';
-    }
+    // }
 });
 
 $('.role-names').click(function(){
   $(this).toggleClass('active-role');
 });
+
 
 $('a[href*="#"]:not([href="#"])').click(function() {
   if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -131,7 +132,7 @@ $('a[href*="#"]:not([href="#"])').click(function() {
     if (target.length) {
       $('html, body').animate({
         scrollTop: target.offset().top - $('.nav').height()
-      }, 1000);
+      }, 400);
       return false;
     }
   }
