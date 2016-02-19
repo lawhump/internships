@@ -13,20 +13,17 @@ function checkNav() {
 }
 
 var scroll = function() {
-  var bottom_of_nav = $('.nav').offset().top + $(this).outerHeight();
-  var bottom_of_roles = $('.roles').offset().top + $(this).outerHeight();
-  var bottom_of_sessions = $('.sessions').offset().top + $(this).outerHeight();
+  var top_of_roles = $('.roles').offset().top;
+  var top_of_sessions = $('.sessions').offset().top;
   var bottom_of_window = $(window).scrollTop() + $(window).height();
 
-  // console.log('bottom_of_roles='+bottom_of_sessions);
-  // console.log('bottom_of_window='+bottom_of_window);
-
+  var margin = 170;
   // Hard coded. I know there's a more elegant way but we only have two days
-  if (bottom_of_window > 3600) {
+  if (bottom_of_window > (top_of_roles+margin)) {
     $('.roles').addClass('is-animating');
   }
 
-  if (bottom_of_window > 3000) {
+  if (bottom_of_window > (top_of_sessions+margin)) {
     $('.sessions').addClass('is-animating');
   }
 
@@ -94,3 +91,23 @@ $(document).ready(function() {
 });
 
 $(window).scroll(scroll);
+
+
+// clickable roles buttons in the form
+
+$('.role-names').click(function(){
+    $(this).toggleClass('active-role');
+  });
+
+$('a[href*="#"]:not([href="#"])').click(function() {
+  if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+    var target = $(this.hash);
+    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+    if (target.length) {
+      $('html, body').animate({
+        scrollTop: target.offset().top - $('.nav').height()
+      }, 1000);
+      return false;
+    }
+  }
+});
