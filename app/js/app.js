@@ -27,6 +27,7 @@ var scroll = function() {
   }
 
   if (bottom_of_window > (top_of_austin+270) && !gif_loaded) {
+    $('.city-skyline').addClass('is-animating');
     $('.city-skyline img').attr("src","etc/icons/austin.gif");
     $('.city-skyline img').attr("alt","austin, Texas");
     gif_loaded = true;
