@@ -20,15 +20,15 @@
 
 @include mui-series {
   .equinox {
-    @include mui-queue(.2s, 0s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.25s, 0s, slide($direction: up, $amount: 15%), fade);
   }
 
   .solstice {
-    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.25s, .07s, slide($direction: up, $amount: 15%), fade);
   }
 
   .swelter {
-    @include mui-queue(.3s, .1s, slide($direction: up, $amount: 15%), fade);
+    @include mui-queue(.25s, .1s, slide($direction: up, $amount: 15%), fade);
   }
 }
 
@@ -41,12 +41,18 @@ section {
 }
 
 
-[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
-  border-bottom: 0px solid $medium-gray;
+[type='text'], [type='password'], [type='date'], [type='datetime'],
+[type='datetime-local'], [type='month'], [type='week'], [type='email'],
+[type='number'], [type='search'], [type='tel'], [type='time'], [type='url'],
+[type='color'], textarea {
+  border-top: 0px solid $medium-gray !important;
+  border-left: 0px solid $medium-gray !important;
+  border-bottom: 1px solid $medium-gray;
+  border-right: 0px solid $medium-gray !important;
 }
 
 input:focus {
-  border-bottom: 0px solid $medium-gray !important;
+  border-bottom: 1px solid #08B49F !important;
 }
 
 /* Helpers */
@@ -73,6 +79,13 @@ input:focus {
 body{
   color:#323232;
   overflow-x: hidden;
+}
+
+h2,h3,h4{
+  font-weight: 600;
+}
+h5{
+  font-weight: 500;
 }
 
 #hero {
@@ -159,6 +172,10 @@ body{
   }
 }
 
+h3{
+  margin: 2rem 0 2rem 0;
+}
+
 .selling-points {
   background-color: #F7F8F9;
   h3 {
@@ -166,12 +183,42 @@ body{
   }
   img{
     padding-top: 5rem;
+    width: rem-calc(250);
   }
 }
 nav {
   background: none;
   border-bottom: 1px solid #DFE9E9;
+
+  .top-bar-left {
+    a {
+      padding: 0;
+      display: inline;
+    }
+  }
+
+  .top-bar-right {
+    a {
+      padding: 0.7rem 0 0.1rem;
+      margin: 0 1rem;
+    }
+  }
+
+  a {
+    width: auto;
+    color: $black;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+      color: $black;
+      border-bottom: 2px solid $black;
+    }
+  }
 }
+.top-bar-left, .top-bar-right {
+  width: auto !important;
+}
+
 .top-bar-left li{
   font-size: 1.2rem;
 }
@@ -386,10 +433,14 @@ section.round-image img{
   padding-bottom: 6rem;
 }
 
+.flex-video {
+  margin-top: 4rem;
+}
+
 #band{
   padding: 4rem 0;
   background-color:#8cd211;
-  margin-top: 0;
+  margin-top: 6rem;
 
 }
 #band h4{
@@ -428,7 +479,9 @@ section.round-image img{
 }
 
 .apply-btn a.button{
-  background-color: #5AA700;
+  background-color: #8CD211;
+  color: #454D56;
+  font-weight: 600;
 }
 
 .alums {
