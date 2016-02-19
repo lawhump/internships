@@ -1,3 +1,37 @@
+@include mui-series {
+  .research {
+    @include mui-queue(.3s, 0s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  // A 2s pause will happen after this animation ends
+  .ui {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  // It works with multiple effects, too!
+  .ux {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  .fed {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+}
+
+@include mui-series {
+  .equinox {
+    @include mui-queue(.3s, 0s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  .solstice {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+
+  .swelter {
+    @include mui-queue(.3s, .07s, slide($direction: up, $amount: 15%), fade);
+  }
+}
+
 section {
   margin-top: 4rem;
 
@@ -72,12 +106,16 @@ section {
 }
 
 .overview {
-  background-color: #ddd;
-  padding: 3rem 0;
+  background-color: #f1f3f4;
+  padding: 6rem 0;
+  margin-top: 0;
 }
 
 .form {
-  text-align: center;
+  background-color: $dark-gray;
+  color: $white;
+  margin-top: 0;
+  padding: 4rem 0;
 }
 
 .footer {

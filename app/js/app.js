@@ -1,8 +1,29 @@
+var scroll = function() {
+  var bottom_of_nav = $('.nav').offset().top + $(this).outerHeight();
+  var bottom_of_roles = $('.roles').offset().top + $(this).outerHeight();
+  var bottom_of_sessions = $('.sessions').offset().top + $(this).outerHeight();
+  var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+  // console.log('bottom_of_roles='+bottom_of_sessions);
+  // console.log('bottom_of_window='+bottom_of_window);
+
+  // Hard coded. I know there's a more elegant way but we only have two days
+  if (bottom_of_window > 2570) {
+    $('.roles').addClass('is-animating');
+  }
+
+  if (bottom_of_window > 3900) {
+    $('.sessions').addClass('is-animating');
+  }
+};
+
 $(document).foundation();
 
 $(document).ready(function() {
   // var $element = $('#example');
   // var elem = new Foundation.Magellan($element);
+
+  scroll();
 
   $('#hero').twentytwenty({
   	default_offset_pct: 0
@@ -54,18 +75,4 @@ $(document).ready(function() {
   $('.shuffle').on('click', shuffle);
 });
 
-$(window).scroll(function(){
-  // var bottom_of_nav = $('.nav').offset().top + $(this).outerHeight();
-  // var bottom_of_roles = $('.roles').offset().top + $(this).outerHeight();
-  // var bottom_of_window = $(window).scrollTop() + $(window).height();
-  //
-  // if (bottom_of_window > bottom_of_roles) {
-  //   $('.roles > div').each(function(i) {
-  //     $(this).animate({'opacity':'1'},500);
-  //   });
-  // }
-
-  // if (bottom_of_window > bottom_of_nav) {
-  //   $('.nav').addClass('fixed');
-  // }
-});
+$(window).scroll(scroll);
