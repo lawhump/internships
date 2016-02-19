@@ -4,9 +4,11 @@ $(document).ready(function() {
   // var $element = $('#example');
   // var elem = new Foundation.Magellan($element);
 
-  $('#hero').twentytwenty({
-  	default_offset_pct: 0
+  $('#hero-slider').twentytwenty({
+  	default_offset_pct: .5
   });
+
+  document.getElementById("hero-vid").play();
 
   var sliderSettings = {
   	item: 4,
