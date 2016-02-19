@@ -47,7 +47,7 @@
 $global-font-size: 100%;
 $global-width: rem-calc(1028);
 $global-lineheight: 1.5;
-$primary-color: #00b4a0; 
+$primary-color: #00b4a0;
 $secondary-color: #8cd211;
 $success-color: #3adb76;
 $warning-color: #ffae00;
@@ -67,6 +67,8 @@ $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
+
+$custom-gray: #454D56;
 
 // 2. Breakpoints
 // --------------
@@ -337,8 +339,8 @@ $select-radius: $global-radius;
 $input-color: $black;
 $input-font-family: inherit;
 $input-font-size: rem-calc(16);
-$input-background: $dark-gray;
-$input-background-focus: $dark-gray;
+$input-background: $custom-gray;
+$input-background-focus: $custom-gray;
 $input-background-disabled: $light-gray;
 // Changed this
 $input-border: 0px solid $medium-gray;
