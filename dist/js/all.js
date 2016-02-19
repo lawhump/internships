@@ -15,6 +15,19 @@ var scroll = function() {
   if (bottom_of_window > 3000) {
     $('.sessions').addClass('is-animating');
   }
+
+  var hero_height = $('#hero').height();
+  var $el = $('.nav');
+  var isPositionFixed = ($el.css('position') == 'fixed');
+  if ($(this).scrollTop() > hero_height && !isPositionFixed){
+    $('.nav').css({'position': 'fixed', 'top': '0px'});
+    document.querySelector('.about').style.paddingTop = '75px'
+  }
+  if ($(this).scrollTop() < hero_height && isPositionFixed) {
+    $('.nav').css({'position': 'static', 'top': '0px'});
+    document.querySelector('.about').style.paddingTop = '0'
+  }
+
 };
 
 $(document).foundation();
