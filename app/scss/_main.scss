@@ -40,6 +40,10 @@ section {
   }
 }
 
+[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
+  border-bottom: 1px solid $medium-gray;
+}
+
 /* Helpers */
 .twentytwenty-overlay {
   display: none;
@@ -109,8 +113,22 @@ body{
     margin: 5rem 0 2rem 0;
   }
 }
+nav {
+  background: none;
+  border-bottom: 1px solid #DFE9E9;
+}
+.top-bar-left li{
+  font-size: 1.2rem;
+}
 .menu-text{
   font-weight: normal;
+}
+.top-bar-right li a{
+  color: #323232;
+}
+.top-bar-right li a.active{
+  color: #5AA700;
+  font-weight: bold;
 }
 
 #overview {
@@ -233,7 +251,7 @@ body{
 .sessions {
   margin-top: 6rem;
   text-align: center;
- 
+
   img {
     height: 5rem;
     width: 5rem;
