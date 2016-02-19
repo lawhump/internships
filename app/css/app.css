@@ -3102,7 +3102,7 @@ table.hover tr:nth-of-type(even):hover {
   text-align: right; }
 
 .title-bar-title {
-  font-weight: bold;
+  font-weight: normal;
   vertical-align: middle;
   display: inline-block; }
 
@@ -4117,6 +4117,9 @@ section {
 
 /* End Helpers */
 /* Highest level shit */
+body {
+  color: #323232; }
+
 #hero {
   width: 100%;
   height: calc(100vh - 70px);
@@ -4142,10 +4145,26 @@ section {
 .selling-points h3 {
   margin: 5rem 0 2rem 0; }
 
-.overview {
+nav {
+  background: none;
+  border-bottom: 1px solid #DFE9E9; }
+
+.top-bar-left li {
+  font-size: 1.2rem; }
+
+.menu-text {
+  font-weight: normal; }
+
+.top-bar-right li a {
+  color: #323232; }
+
+.top-bar-right li a.active {
+  color: #5AA700;
+  font-weight: bold; }
+
+#overview {
   background-color: #f1f3f4;
-  padding: 6rem 0;
-  margin-top: 0; }
+  padding-bottom: 3rem; }
 
 .form {
   background-color: #323232;
@@ -4226,7 +4245,8 @@ section {
 
 #band {
   padding: 4rem 0;
-  background-color: #8cd211; }
+  background-color: #8cd211;
+  margin-top: 0; }
 
 #band h5 {
   padding-bottom: 2rem; }
